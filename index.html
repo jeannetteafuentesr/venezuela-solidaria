@@ -230,31 +230,31 @@
 
     .tarjeta-link {
       position: absolute;
-      top: 0.85rem;
-      right: 0.85rem;
-      width: 28px;
-      height: 28px;
-      background: var(--fondo);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--texto2);
-      text-decoration: none;
-      transition: background .15s, color .15s;
-      flex-shrink: 0;
-    }
-
-    .tarjeta-link:hover {
-      background: #002770;
-      color: #fff;
-    }
-
-    .tarjeta-link::after {
-      content: '';
-      position: absolute;
       inset: 0;
       border-radius: 12px;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 0.75rem;
+      color: var(--texto2);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .tarjeta-link svg {
+      background: var(--fondo);
+      border-radius: 50%;
+      padding: 5px;
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      transition: background .15s, color .15s;
+    }
+
+    .tarjeta-link:hover svg {
+      background: #002770;
+      color: #fff;
     }
 
     .tarjeta-link:focus-visible {
