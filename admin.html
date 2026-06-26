@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Venezuela Solidaria</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:   #003893;
+      --amarillo: #FCD116;
+      --rojo:   #CF142B;
+      --verde:  #2e7d32;
+      --fondo:  #f0f2f8;
+      --tarjeta: #fff;
+      --borde:  #dde3f0;
+      --radio:  12px;
+      --sombra: 0 2px 14px rgba(0,40,120,0.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--fondo);
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .login-card {
+      background: var(--tarjeta);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--borde);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .login-card h1 { font-size: 1.5rem; font-weight: 800; color: var(--azul); margin-bottom: .3rem; }
+    .login-card p  { font-size: .88rem; color: #666; margin-bottom: 1.5rem; }
+
+    .login-card input[type="password"] {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 1.5px solid var(--borde);
+      border-radius: 9px;
+      font-size: 1rem;
+      margin-bottom: .8rem;
+      text-align: center;
+      letter-spacing: .2em;
+      font-family: inherit;
+      transition: border-color .15s;
+    }
+
+    .login-card input[type="password"]:focus {
+      outline: none;
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(0,56,147,.1);
+    }
+
+    .btn-login {
+      width: 100%;
+      background: var(--azul);
+      color: #fff;
+      border: none;
+      padding: .8rem;
+      border-radius: 9px;
+      font-size: .95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .btn-login:hover { background: #002060; }
+
+    .error-msg {
+      display: none;
+      color: var(--rojo);
+      font-size: .83rem;
+      margin-top: .6rem;
+      font-weight: 600;
+    }
+
+    /* ── DASHBOARD ── */
+    #dashboard { display: none; }
+
+    .top-bar {
+      background: linear-gradient(160deg, #001f6e 0%, var(--azul) 100%);
+      color: #fff;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .top-bar h1 { font-size: 1.2rem; font-weight: 800; }
+    .top-bar span { font-size: .82rem; opacity: .75; }
+
+    .btn-salir {
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.3);
+      padding: .4rem .9rem;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .btn-salir:hover { background: rgba(255,255,255,.25); }
+
+    .dash-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* ── STATS CARDS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--tarjeta);
+      border-radius: var(--radio);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--borde);
+    }
+
+    .stat-num {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--azul);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .78rem;
+      color: #666;
+      margin-top: .35rem;
+      font-weight: 600;
+    }
+
+    /* ── SECCIONES ── */
+    .sec-titulo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--azul);
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid var(--amarillo);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .card {
+      background: var(--tarjeta);
+      border-radius: var(--radio);
+      padding: 1.5rem;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--borde);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h3 { font-size: .95rem; font-weight: 700; color: #333; margin-bottom: .75rem; }
+
+    .card p, .card li {
+      font-size: .88rem;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .card ol, .card ul { padding-left: 1.2rem; }
+
+    .btn-link {
+      display: inline-block;
+      background: var(--azul);
+      color: #fff;
+      text-decoration: none;
+      padding: .6rem 1.2rem;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 700;
+      margin-top: .75rem;
+      transition: background .15s;
+    }
+
+    .btn-link:hover { background: #002060; }
+
+    .btn-link.verde { background: var(--verde); }
+    .btn-link.verde:hover { background: #1b5e20; }
+
+    .code-block {
+      background: #f4f6fa;
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Menlo', 'Courier New', monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      color: #1a2a5e;
+      overflow-x: auto;
+      margin-top: .75rem;
+    }
+
+    .recurso-list { list-style: none; padding: 0; }
+
+    .recurso-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: .7rem 0;
+      border-bottom: 1px solid var(--borde);
+      font-size: .88rem;
+    }
+
+    .recurso-list li:last-child { border-bottom: none; }
+
+    .r-badge {
+      flex-shrink: 0;
+      font-size: .7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      background: rgba(0,56,147,.08);
+      color: var(--azul);
+      padding: .2rem .55rem;
+      border-radius: 50px;
+    }
+
+    .tag-pendiente { background: rgba(255,165,0,.12); color: #b06000; }
+
+    .timestamp {
+      font-size: .78rem;
+      color: #aaa;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .top-bar h1 { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGIN ── -->
+  <div id="login-screen">
+    <div class="login-card">
+      <h1>🔒 Acceso Admin</h1>
+      <p>Venezuela Solidaria — Panel de administración</p>
+      <input type="password" id="pwd" placeholder="Contraseña" onkeydown="if(event.key==='Enter')login()" />
+      <button class="btn-login" onclick="login()">Entrar</button>
+      <p class="error-msg" id="err">Contraseña incorrecta. Inténtalo de nuevo.</p>
+    </div>
+  </div>
+
+  <!-- ── DASHBOARD ── -->
+  <div id="dashboard">
+    <div class="top-bar">
+      <div>
+        <h1>🇻🇪 Venezuela Solidaria — Admin</h1>
+        <span id="fecha-hora"></span>
+      </div>
+      <button class="btn-salir" onclick="salir()">Cerrar sesión</button>
+    </div>
+
+    <div class="dash-content">
+
+      <!-- STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">8</div>
+          <div class="stat-label">Recursos publicados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Pendientes de publicar</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Categorías activas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="visitas-hoy">—</div>
+          <div class="stat-label">Visitas (ver abajo)</div>
+        </div>
+      </div>
+
+      <!-- FORMULARIOS NETLIFY -->
+      <h2 class="sec-titulo">📥 Formularios recibidos</h2>
+      <div class="card">
+        <h3>Ver sugerencias y comentarios enviados por usuarios</h3>
+        <p>Todas las respuestas de los formularios se guardan en tu panel de Netlify. Haz clic a continuación para verlas:</p>
+        <a class="btn-link" href="https://app.netlify.com" target="_blank" rel="noopener">Ir al panel de Netlify →</a>
+        <p style="margin-top:.75rem; font-size:.82rem; color:#888;">
+          Una vez dentro: <strong>Tu sitio → Forms</strong> → selecciona "sugerencias" o "comentarios".<br/>
+          Netlify también te enviará un correo a <strong>jeannetteafuentesr@gmail.com</strong> por cada envío nuevo (configurable en Site settings → Forms → Form notifications).
+        </p>
+      </div>
+
+      <!-- ANALÍTICA -->
+      <h2 class="sec-titulo">📊 Analítica de visitas</h2>
+      <div class="card">
+        <h3>Configurar analítica gratuita (2 minutos)</h3>
+        <p>Te recomendamos <strong>GoatCounter</strong> — es gratis, sin cookies, y visible solo para ti:</p>
+        <ol style="margin-top:.6rem;">
+          <li>Ve a <a href="https://www.goatcounter.com" target="_blank" style="color:var(--azul);">goatcounter.com</a> y crea una cuenta gratis.</li>
+          <li>Elige un nombre de sitio (ej. <em>venezuela-solidaria</em>).</li>
+          <li>Copia el script que te dan y pégalo justo antes de <code>&lt;/body&gt;</code> en tu <code>index.html</code>.</li>
+          <li>Re-despliega el sitio en Netlify (arrastra la carpeta de nuevo).</li>
+          <li>Las visitas aparecerán en tu panel de GoatCounter en tiempo real.</li>
+        </ol>
+        <a class="btn-link verde" href="https://www.goatcounter.com" target="_blank" rel="noopener">Crear cuenta en GoatCounter →</a>
+      </div>
+
+      <!-- RECURSOS ACTUALES -->
+      <h2 class="sec-titulo">📋 Recursos actuales en el sitio</h2>
+      <div class="card">
+        <ul class="recurso-list">
+          <li><span class="r-badge">Ingenieros</span><div><strong>Voluntarios Profesionales</strong><br/><span style="color:#888">voluntariosprofesionales.vercel.app</span></div></li>
+          <li><span class="r-badge">Ingenieros</span><div><strong>Sismo Ayuda Ve</strong><br/><span style="color:#888">sismoayudave.com</span></div></li>
+          <li><span class="r-badge">Salud</span><div><strong>Hospitales en Venezuela</strong><br/><span style="color:#888">hospitalesenvenezuela.com</span></div></li>
+          <li><span class="r-badge">Acopio</span><div><strong>Centros de Acopio</strong><br/><span style="color:#888">Google Sheets</span></div></li>
+          <li><span class="r-badge">Mascotas</span><div><strong>HuellasCan</strong><br/><span style="color:#888">huellascan.com</span></div></li>
+          <li><span class="r-badge">Médico</span><div><strong>Yesos por Impresión 3D</strong><br/><span style="color:#888">Google Drive</span></div></li>
+          <li><span class="r-badge">Donación</span><div><strong>GoFundMe – Emergencia Venezuela</strong><br/><span style="color:#888">gofundme.com</span></div></li>
+          <li><span class="r-badge">Mapa</span><div><strong>Mapa de Daños – Terremoto Venezuela</strong><br/><span style="color:#888">terremotovenezuela.com</span></div></li>
+          <li><span class="r-badge tag-pendiente">Pendiente</span><div><strong>Personas Desaparecidas</strong><br/><span style="color:#888">Sin URL — esperando sugerencia de usuarios</span></div></li>
+        </ul>
+      </div>
+
+      <!-- AÑADIR RECURSO -->
+      <h2 class="sec-titulo">➕ Cómo añadir un nuevo recurso</h2>
+      <div class="card">
+        <h3>Pasos para publicar un recurso aprobado</h3>
+        <ol>
+          <li>Abre el archivo <code>index.html</code> con cualquier editor de texto (Bloc de notas, TextEdit, VS Code…).</li>
+          <li>Busca el comentario <code>&lt;!-- Pendiente: personas desaparecidas --&gt;</code> o cualquier tarjeta de la sección <strong>Recursos de ayuda disponibles</strong>.</li>
+          <li>Copia una tarjeta existente y cambia el icono, categoría, título, descripción y URL.</li>
+          <li>Guarda el archivo.</li>
+          <li>Arrastra la carpeta <code>venezuela-solidaria</code> a <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--azul)">app.netlify.com/drop</a> — el sitio se actualiza en segundos.</li>
+        </ol>
+        <p style="margin-top:.75rem; font-size:.82rem; color:#888;">💡 Para evitar re-desplegar con arrastrar cada vez, puedes conectar el sitio a un repositorio de GitHub en la configuración de Netlify.</p>
+
+        <h3 style="margin-top:1.25rem;">Plantilla de tarjeta</h3>
+        <div class="code-block">&lt;div class="tarjeta"&gt;
+  &lt;span class="tarjeta-icon"&gt;🔍&lt;/span&gt;
+  &lt;span class="tarjeta-cat"&gt;Personas&lt;/span&gt;
+  &lt;h3&gt;Nombre del recurso&lt;/h3&gt;
+  &lt;p&gt;Descripción breve de qué hace y a quién ayuda.&lt;/p&gt;
+  &lt;a href="https://URL-aqui.com" target="_blank"
+     rel="noopener noreferrer" class="btn-ir"&gt;
+    Ir al recurso →
+  &lt;/a&gt;
+&lt;/div&gt;</div>
+      </div>
+
+      <!-- CAMBIAR CONTRASEÑA -->
+      <h2 class="sec-titulo">🔑 Cambiar contraseña de admin</h2>
+      <div class="card">
+        <h3>Cómo cambiar la contraseña</h3>
+        <p>Abre <code>admin.html</code>, busca esta línea y reemplaza la contraseña:</p>
+        <div class="code-block">const ADMIN_PASSWORD = "Venezuela2025!";</div>
+        <p style="margin-top:.6rem; font-size:.83rem; color:#888;">⚠️ Recuerda re-desplegar el sitio en Netlify después de cambiarla.</p>
+      </div>
+
+      <p class="timestamp" id="last-updated"></p>
+
+    </div>
+  </div>
+
+  <script>
+    // ── CONTRASEÑA ──
+    // Para cambiarla: busca esta línea y escribe tu nueva contraseña
+    const ADMIN_PASSWORD = "Venezuela2025!";
+
+    function login() {
+      const val = document.getElementById('pwd').value;
+      if (val === ADMIN_PASSWORD) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        sessionStorage.setItem('vs_admin', '1');
+        updateTime();
+      } else {
+        document.getElementById('err').style.display = 'block';
+        document.getElementById('pwd').value = '';
+        document.getElementById('pwd').focus();
+      }
+    }
+
+    function salir() {
+      sessionStorage.removeItem('vs_admin');
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('pwd').value = '';
+    }
+
+    function updateTime() {
+      const now = new Date();
+      const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit' };
+      document.getElementById('fecha-hora').textContent = now.toLocaleDateString('es-VE', opts);
+      document.getElementById('last-updated').textContent = 'Panel cargado el ' + now.toLocaleString('es-VE');
+    }
+
+    // Mantener sesión si ya inició
+    if (sessionStorage.getItem('vs_admin') === '1') {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      updateTime();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Directorio unificado de recursos de ayuda para las víctimas del terremoto en Venezuela. Personas, mascotas, centros de acopio, ingenieros voluntarios y más." />
+  <meta property="og:title" content="Venezuela Solidaria – Directorio de Ayuda" />
+  <meta property="og:description" content="Encuentra todos los recursos de ayuda tras el terremoto en un solo lugar." />
+  <meta property="og:type" content="website" />
+  <title>Venezuela Solidaria – Directorio de Ayuda</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amarillo: #FCD116;
+      --azul:     #003893;
+      --rojo:     #CF142B;
+      --fondo:    #f4f6fa;
+      --tarjeta:  #ffffff;
+      --texto:    #1a1a2e;
+      --texto2:   #555e7a;
+      --borde:    #dde3f0;
+      --radio:    14px;
+      --sombra:   0 2px 16px rgba(0,40,120,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+      line-height: 1.65;
+    }
+
+    /* ── BANDERA ── */
+    .flag-stripe {
+      height: 7px;
+      background: linear-gradient(to right,
+        var(--amarillo) 33.3%,
+        var(--azul)     33.3% 66.6%,
+        var(--rojo)     66.6%);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(160deg, #001f6e 0%, var(--azul) 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-emoji { font-size: 2.8rem; display: block; margin-bottom: 0.4rem; }
+
+    header h1 {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    header h1 span { color: var(--amarillo); }
+
+    header p {
+      margin-top: 0.75rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      opacity: 0.88;
+      max-width: 580px;
+      margin-inline: auto;
+    }
+
+    .badge-urgencia {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: var(--rojo);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ── SECCIÓN DONACIÓN ── */
+    .bloque-donacion {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      border: 2px solid #ffcc80;
+      border-radius: var(--radio);
+      padding: 2rem 2rem 2rem;
+      margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      box-shadow: var(--sombra);
+    }
+
+    .bloque-donacion .big-icon { font-size: 3rem; }
+
+    .bloque-donacion h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #7b3b00;
+    }
+
+    .bloque-donacion p {
+      font-size: 0.95rem;
+      color: #8b4a00;
+      max-width: 480px;
+    }
+
+    .btn-donar {
+      display: inline-block;
+      background: var(--rojo);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(207,20,43,0.38);
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .btn-donar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(207,20,43,0.48);
+    }
+
+    /* ── TÍTULOS DE SECCIÓN ── */
+    .sec-titulo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--azul);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sec-titulo::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--amarillo), transparent);
+      margin-left: 0.5rem;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── TARJETA ── */
+    .tarjeta {
+      background: var(--tarjeta);
+      border-radius: var(--radio);
+      padding: 1.5rem;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--borde);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,40,120,0.14);
+    }
+
+    .tarjeta-icon { font-size: 2.2rem; }
+
+    .tarjeta-cat {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--azul);
+      background: rgba(0,56,147,0.08);
+      display: inline-block;
+      padding: .2rem .65rem;
+      border-radius: 50px;
+      width: fit-content;
+    }
+
+    .tarjeta h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .tarjeta p {
+      font-size: 0.88rem;
+      color: var(--texto2);
+      flex: 1;
+    }
+
+    .btn-ir {
+      display: block;
+      text-align: center;
+      background: var(--azul);
+      color: #fff;
+      text-decoration: none;
+      padding: .65rem 1rem;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      transition: background .15s;
+    }
+
+    .btn-ir:hover { background: #002060; }
+
+    .tarjeta.pendiente {
+      border-style: dashed;
+      opacity: 0.7;
+    }
+
+    .tarjeta.pendiente .btn-ir {
+      background: #9eafc4;
+    }
+
+    /* ── FORMULARIOS ── */
+    .formularios-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 680px) {
+      .formularios-wrap { grid-template-columns: 1fr; }
+    }
+
+    .form-card {
+      background: var(--tarjeta);
+      border-radius: var(--radio);
+      padding: 1.75rem;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--borde);
+    }
+
+    .form-card h2 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--azul);
+      margin-bottom: 1.25rem;
+    }
+
+    .fg { margin-bottom: .9rem; }
+
+    .fg label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 700;
+      color: #374060;
+      margin-bottom: .3rem;
+    }
+
+    .fg input,
+    .fg textarea,
+    .fg select {
+      width: 100%;
+      padding: .65rem .9rem;
+      border: 1.5px solid var(--borde);
+      border-radius: 9px;
+      font-size: .88rem;
+      font-family: inherit;
+      color: var(--texto);
+      background: #fff;
+      transition: border-color .15s;
+    }
+
+    .fg input:focus,
+    .fg textarea:focus,
+    .fg select:focus {
+      outline: none;
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(0,56,147,.1);
+    }
+
+    .fg textarea { resize: vertical; min-height: 90px; }
+
+    .btn-enviar {
+      width: 100%;
+      background: var(--azul);
+      color: #fff;
+      border: none;
+      padding: .75rem 1.5rem;
+      border-radius: 9px;
+      font-size: .95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .btn-enviar:hover { background: #002060; }
+
+    .nota-form {
+      font-size: .78rem;
+      color: #8a94aa;
+      margin-top: .55rem;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #001a5c;
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 1.75rem 1rem;
+      font-size: .85rem;
+    }
+
+    footer strong { color: var(--amarillo); }
+
+    .admin-tiny {
+      display: block;
+      margin-top: 1rem;
+      font-size: .75rem;
+      color: rgba(255,255,255,.25);
+      text-decoration: none;
+    }
+
+    .admin-tiny:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      main { padding: 1.5rem 1rem 3rem; }
+      .bloque-donacion { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flag-stripe"></div>
+
+  <header>
+    <span class="header-emoji">🇻🇪</span>
+    <h1>Venezuela <span>Solidaria</span></h1>
+    <p>Directorio unificado de recursos de ayuda para las víctimas del terremoto</p>
+    <span class="badge-urgencia">⚠️ Emergencia activa — información verificada</span>
+  </header>
+
+  <main>
+
+    <!-- ── DONACIÓN DESTACADA ── -->
+    <div class="bloque-donacion">
+      <div class="big-icon">❤️</div>
+      <h2>Apoya con una donación monetaria</h2>
+      <p>Cada aporte, por pequeño que sea, llega directamente a las familias afectadas por el terremoto en Venezuela.</p>
+      <a href="https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims" target="_blank" rel="noopener noreferrer" class="btn-donar">
+        Donar en GoFundMe →
+      </a>
+    </div>
+
+    <!-- ── RECURSOS ── -->
+    <h2 class="sec-titulo">📋 Recursos de ayuda disponibles</h2>
+
+    <div class="grid">
+
+      <!-- Voluntarios profesionales -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">🏗️</span>
+        <span class="tarjeta-cat">Ingenieros Voluntarios</span>
+        <h3>Voluntarios Profesionales</h3>
+        <p>Solicita la evaluación gratuita de tu vivienda o edificio por ingenieros y arquitectos voluntarios que inspeccionan los daños estructurales.</p>
+        <a href="https://voluntariosprofesionales.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-ir">Solicitar evaluación →</a>
+      </div>
+
+      <!-- Sismo Ayuda Ve -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">🏛️</span>
+        <span class="tarjeta-cat">Ingenieros Voluntarios</span>
+        <h3>Sismo Ayuda Ve</h3>
+        <p>Plataforma para conectar a ingenieros y profesionales voluntarios con familias que necesitan evaluación de daños estructurales tras el sismo.</p>
+        <a href="https://www.sismoayudave.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Ir al recurso →</a>
+      </div>
+
+      <!-- Hospitales -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">🏥</span>
+        <span class="tarjeta-cat">Salud</span>
+        <h3>Hospitales en Venezuela</h3>
+        <p>Directorio de hospitales y centros médicos activos. Encuentra el centro de salud más cercano a tu ubicación.</p>
+        <a href="https://hospitalesenvenezuela.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver directorio →</a>
+      </div>
+
+      <!-- Centros de acopio -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">📦</span>
+        <span class="tarjeta-cat">Centros de Acopio</span>
+        <h3>Centros de Acopio</h3>
+        <p>Listado completo de centros de acopio en Venezuela y en el mundo donde puedes entregar o recibir donaciones de alimentos, ropa y medicinas.</p>
+        <a href="https://docs.google.com/spreadsheets/d/1OTNQGMsK3nU2wqy00rtPPcwsSzAlorWeP-uIotWpkxM/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver listado →</a>
+      </div>
+
+      <!-- Mascotas -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">🐾</span>
+        <span class="tarjeta-cat">Mascotas</span>
+        <h3>HuellasCan – Mascotas Perdidas</h3>
+        <p>Plataforma para reportar mascotas perdidas o encontradas durante el sismo. Ayuda a reunir familias con sus animales.</p>
+        <a href="https://www.huellascan.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Buscar / reportar mascota →</a>
+      </div>
+
+      <!-- Yesos 3D -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">🦴</span>
+        <span class="tarjeta-cat">Ayuda Médica</span>
+        <h3>Yesos por Impresión 3D</h3>
+        <p>Archivo listo para imprimir yesos ortopédicos en 3D para víctimas con fracturas. Si tienes una impresora 3D, descarga el archivo y ayuda.</p>
+        <a href="https://drive.google.com/file/d/1p2C2FDBTM-AGO-xk8ViA_5nBB7a9QhZn/view" target="_blank" rel="noopener noreferrer" class="btn-ir">Descargar archivo →</a>
+      </div>
+
+      <!-- Mapa de daños -->
+      <div class="tarjeta">
+        <span class="tarjeta-icon">🗺️</span>
+        <span class="tarjeta-cat">Mapa de Daños</span>
+        <h3>Mapa de Daños – Terremoto Venezuela</h3>
+        <p>Mapa interactivo con el reporte de daños estructurales en edificios y viviendas afectadas por el sismo. Consulta o reporta daños en tu zona.</p>
+        <a href="https://terremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver mapa →</a>
+      </div>
+
+      <!-- Pendiente: personas desaparecidas -->
+      <div class="tarjeta pendiente">
+        <span class="tarjeta-icon">🔍</span>
+        <span class="tarjeta-cat">Personas</span>
+        <h3>Personas Desaparecidas</h3>
+        <p>¿Conoces un recurso para reportar o buscar personas desaparecidas? Envíalo abajo para que lo revisemos y lo publiquemos aquí.</p>
+        <a href="#sugerir" class="btn-ir">Sugerir enlace →</a>
+      </div>
+
+    </div>
+
+    <!-- ── FORMULARIOS ── -->
+    <h2 class="sec-titulo" id="formularios">✉️ Escríbenos</h2>
+
+    <div class="formularios-wrap">
+
+      <!-- Feedback -->
+      <div class="form-card">
+        <h2>💬 Comentario o corrección</h2>
+        <form name="comentarios" method="POST" data-netlify="true" action="gracias.html">
+          <input type="hidden" name="form-name" value="comentarios" />
+          <div class="fg">
+            <label for="n-c">Tu nombre <span style="color:#aaa;font-weight:400">(opcional)</span></label>
+            <input type="text" id="n-c" name="nombre" placeholder="Ej. María García" />
+          </div>
+          <div class="fg">
+            <label for="e-c">Correo electrónico <span style="color:#aaa;font-weight:400">(opcional)</span></label>
+            <input type="email" id="e-c" name="correo" placeholder="tu@correo.com" />
+          </div>
+          <div class="fg">
+            <label for="msg">Mensaje *</label>
+            <textarea id="msg" name="mensaje" required placeholder="Tu comentario, corrección o sugerencia..."></textarea>
+          </div>
+          <button type="submit" class="btn-enviar">Enviar comentario</button>
+          <p class="nota-form">Tu mensaje llega directamente al equipo que mantiene esta página.</p>
+        </form>
+      </div>
+
+      <!-- Sugerir recurso -->
+      <div class="form-card" id="sugerir">
+        <h2>🔗 Sugerir un nuevo recurso</h2>
+        <form name="sugerencias" method="POST" data-netlify="true" action="gracias.html">
+          <input type="hidden" name="form-name" value="sugerencias" />
+          <div class="fg">
+            <label for="n-r">Nombre del recurso *</label>
+            <input type="text" id="n-r" name="nombre_recurso" required placeholder="Ej. Albergues en Caracas" />
+          </div>
+          <div class="fg">
+            <label for="u-r">URL *</label>
+            <input type="url" id="u-r" name="url" required placeholder="https://..." />
+          </div>
+          <div class="fg">
+            <label for="d-r">Descripción breve *</label>
+            <textarea id="d-r" name="descripcion" required placeholder="¿Qué ofrece esta página? ¿A quién ayuda?" style="min-height:75px;"></textarea>
+          </div>
+          <div class="fg">
+            <label for="c-r">Categoría</label>
+            <select id="c-r" name="categoria">
+              <option value="">Selecciona una categoría</option>
+              <option>Personas desaparecidas / encontradas</option>
+              <option>Mascotas</option>
+              <option>Centros de acopio</option>
+              <option>Salud / Médico</option>
+              <option>Ingenieros / Voluntarios</option>
+              <option>Donaciones</option>
+              <option>Albergues</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="ct-r">Tu contacto <span style="color:#aaa;font-weight:400">(opcional)</span></label>
+            <input type="text" id="ct-r" name="contacto" placeholder="Nombre o correo, por si tenemos preguntas" />
+          </div>
+          <button type="submit" class="btn-enviar">Enviar sugerencia</button>
+          <p class="nota-form">⚠️ Todos los recursos son revisados antes de publicarse.</p>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>🇻🇪 <strong>Venezuela Solidaria</strong> — Hecho con amor para Venezuela</p>
+    <p style="margin-top:.4rem;">Esta página no tiene fines de lucro. La información es verificada antes de publicarse.</p>
+    <a href="admin.html" class="admin-tiny">· admin ·</a>
+  </footer>
+
+</body>
+</html>
