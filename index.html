@@ -29,7 +29,9 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-      background: var(--fondo);
+      background-color: #ffffff;
+      background-image: radial-gradient(circle, rgba(0,56,147,0.25) 1px, transparent 1px);
+      background-size: 22px 22px;
       color: var(--texto);
       line-height: 1.6;
     }
@@ -115,8 +117,8 @@
     header p { display: none; }
 
     .badge-urgencia {
-      background: #e3f0fd;
-      color: #002770;
+      background: rgba(0,56,147,0.07);
+      color: var(--azul);
       font-size: 0.68rem;
       font-weight: 600;
       padding: 0.25rem 0.75rem;
@@ -124,7 +126,7 @@
       letter-spacing: 0.01em;
       white-space: nowrap;
       flex-shrink: 0;
-      border: 1px solid rgba(0,39,112,0.12);
+      border: 1px solid rgba(0,56,147,0.15);
     }
 
     /* ── MAIN ── */
@@ -144,10 +146,17 @@
     }
 
     /* ── GRUPOS DE CATEGORÍA ── */
-    .categoria-grupo { margin-bottom: 3rem; }
+    .categoria-grupo {
+      margin-bottom: 1.5rem;
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--borde);
+      padding: 1.25rem 1.25rem 1.35rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.05);
+    }
 
     .categoria-titulo {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--texto);
       letter-spacing: -0.3px;
@@ -166,15 +175,16 @@
 
     /* ── TARJETA ── */
     .tarjeta {
-      background: var(--tarjeta);
-      border-radius: var(--radio);
-      padding: 1.35rem 1.35rem 1.15rem;
-      box-shadow: var(--sombra);
-      border: 1px solid var(--borde);
+      background: rgba(245,245,247,0.7);
+      border-radius: 12px;
+      padding: 1rem 1.1rem 1rem;
+      box-shadow: none;
+      border: 1px solid rgba(0,0,0,0.06);
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.35rem;
       transition: box-shadow .2s, transform .2s;
+      position: relative;
     }
 
     .tarjeta:hover {
@@ -182,61 +192,71 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.1);
     }
 
-    .tarjeta-icon { font-size: 1.9rem; }
+    .tarjeta-icon { font-size: 1.5rem; }
 
     .tarjeta-cat {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .07em;
       color: var(--azul);
       background: rgba(0,56,147,0.07);
       display: inline-block;
-      padding: .18rem .6rem;
+      padding: .14rem .55rem;
       border-radius: 50px;
       width: fit-content;
     }
 
     .tarjeta h3 {
-      font-size: 1rem;
+      font-size: 0.92rem;
       font-weight: 600;
       letter-spacing: -0.2px;
       line-height: 1.3;
       color: var(--texto);
+      padding-right: 2rem;
     }
 
     .tarjeta p {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--texto2);
       flex: 1;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    .btn-ir {
-      display: block;
-      text-align: center;
+    .tarjeta-link {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 28px;
+      height: 28px;
+      background: var(--fondo);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--texto2);
+      text-decoration: none;
+      transition: background .15s, color .15s;
+      flex-shrink: 0;
+    }
+
+    .tarjeta-link:hover {
       background: #002770;
       color: #fff;
-      text-decoration: none;
-      padding: .6rem 1rem;
-      border-radius: 980px;
-      font-weight: 600;
-      font-size: 0.875rem;
-      margin-top: 0.4rem;
-      transition: background .15s, opacity .15s;
-      letter-spacing: -0.1px;
     }
 
-    .btn-ir:hover { background: #001a52; }
+    .tarjeta-link:focus-visible {
+      outline: 3px solid var(--amarillo);
+      outline-offset: 2px;
+    }
 
-    .btn-ir:focus-visible,
     .btn-enviar:focus-visible {
       outline: 3px solid var(--amarillo);
       outline-offset: 3px;
     }
 
     .tarjeta.pendiente { opacity: 0.6; }
-    .tarjeta.pendiente .btn-ir { background: #aeaeb2; }
+    .tarjeta.pendiente .tarjeta-link { background: #e5e5ea; color: #aeaeb2; }
 
     /* ── SECCIÓN TÍTULO ── */
     .sec-titulo {
@@ -402,7 +422,9 @@
   <main>
 
     <!-- ── DESCRIPCIÓN ── -->
-    <p style="font-size:1.05rem;color:var(--texto2);margin-bottom:2rem;line-height:1.6;">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
+    <div style="background:#fff;border-radius:20px;border:1px solid var(--borde);padding:1.1rem 1.25rem;margin-bottom:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);">
+      <p style="font-size:1rem;color:var(--texto2);line-height:1.6;">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
+    </div>
 
     <!-- ── RECURSOS POR CATEGORÍA ── -->
 
@@ -411,39 +433,39 @@
       <h2 class="categoria-titulo">🏥 Salud y Médicos</h2>
       <div class="grid">
         <div class="tarjeta">
+          <a href="https://hospitalesenvenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🏥</span>
           <span class="tarjeta-cat">Salud</span>
           <h3>Hospitales en Venezuela</h3>
           <p>Busca a tus familiares en los centros de salud. Consulta qué hospitales y clínicas tienen pacientes ingresados tras el terremoto.</p>
-          <a href="https://hospitalesenvenezuela.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver directorio →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://drive.google.com/drive/folders/1o36ifaRz45kAs5rKzci49aD0mP5JB_YI" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📋</span>
           <span class="tarjeta-cat">Salud</span>
           <h3>Lista de Ingresados en Hospitales</h3>
           <p>Listado de personas ingresadas en centros de salud tras el terremoto. Consulta si un familiar está hospitalizado.</p>
-          <a href="https://drive.google.com/drive/folders/1o36ifaRz45kAs5rKzci49aD0mP5JB_YI" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver listado →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://escuchactiva.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🧠</span>
           <span class="tarjeta-cat">Salud Mental</span>
           <h3>Escucha Activa – Apoyo Psicológico</h3>
           <p>Asistencia psicológica gratuita para personas afectadas por el terremoto. Psicólogos voluntarios disponibles para escucharte y acompañarte.</p>
-          <a href="https://escuchactiva.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Solicitar apoyo →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3EebwRjaZOypFhouWQn3Nh3JynJm8p92YPE5RuVRiQlEfng/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">👨‍⚕️</span>
           <span class="tarjeta-cat">Consulta Médica</span>
           <h3>Consulta Médica Online Gratis</h3>
           <p>Regístrate para recibir una consulta médica online gratuita con profesionales de la salud.</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3EebwRjaZOypFhouWQn3Nh3JynJm8p92YPE5RuVRiQlEfng/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="btn-ir">Registrarse →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://drive.google.com/file/d/1p2C2FDBTM-AGO-xk8ViA_5nBB7a9QhZn/view" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🦴</span>
           <span class="tarjeta-cat">Impresión 3D</span>
           <h3>Yesos por Impresión 3D</h3>
           <p>Archivo listo para imprimir yesos ortopédicos en 3D para víctimas con fracturas. Si tienes una impresora 3D, descarga el archivo y ayuda.</p>
-          <a href="https://drive.google.com/file/d/1p2C2FDBTM-AGO-xk8ViA_5nBB7a9QhZn/view" target="_blank" rel="noopener noreferrer" class="btn-ir">Descargar archivo →</a>
         </div>
       </div>
     </div>
@@ -453,18 +475,18 @@
       <h2 class="categoria-titulo">🔍 Búsqueda de Personas y Mascotas</h2>
       <div class="grid">
         <div class="tarjeta">
+          <a href="https://desaparecidosterremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🔍</span>
           <span class="tarjeta-cat">Personas</span>
           <h3>Personas Desaparecidas</h3>
           <p>Plataforma para reportar o buscar personas desaparecidas tras el terremoto en Venezuela. Publica o consulta casos de familiares y conocidos.</p>
-          <a href="https://desaparecidosterremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Buscar / reportar →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://www.huellascan.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🐾</span>
           <span class="tarjeta-cat">Mascotas</span>
           <h3>HuellasCan – Mascotas Perdidas</h3>
           <p>Plataforma para reportar mascotas perdidas o encontradas durante el sismo. Ayuda a reunir familias con sus animales.</p>
-          <a href="https://www.huellascan.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Buscar / reportar mascota →</a>
         </div>
       </div>
     </div>
@@ -474,18 +496,18 @@
       <h2 class="categoria-titulo">🏗️ Ingenieros y Estructuras</h2>
       <div class="grid">
         <div class="tarjeta">
+          <a href="https://www.sismoayudave.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🏛️</span>
           <span class="tarjeta-cat">Ingenieros Voluntarios</span>
           <h3>Sismo Ayuda Ve</h3>
           <p>Conecta con ingenieros voluntarios para evaluar los daños estructurales de tu vivienda.</p>
-          <a href="https://www.sismoayudave.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Reportar mis daños →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://terremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🗺️</span>
           <span class="tarjeta-cat">Mapa de Daños</span>
           <h3>Mapa de Daños – Terremoto Venezuela</h3>
           <p>Mapa interactivo con el reporte de daños estructurales en edificios y viviendas afectadas por el sismo. Consulta o reporta daños en tu zona.</p>
-          <a href="https://terremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver mapa →</a>
         </div>
       </div>
     </div>
@@ -495,18 +517,25 @@
       <h2 class="categoria-titulo">🤝 Donaciones, Acopio y Voluntariado</h2>
       <div class="grid">
         <div class="tarjeta">
+          <a href="https://docs.google.com/spreadsheets/d/1OTNQGMsK3nU2wqy00rtPPcwsSzAlorWeP-uIotWpkxM/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📦</span>
           <span class="tarjeta-cat">Centros de Acopio</span>
           <h3>Centros de Acopio</h3>
           <p>Listado completo de centros de acopio en Venezuela y en el mundo donde puedes entregar o recibir donaciones de alimentos, ropa y medicinas.</p>
-          <a href="https://docs.google.com/spreadsheets/d/1OTNQGMsK3nU2wqy00rtPPcwsSzAlorWeP-uIotWpkxM/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="btn-ir">Ver listado →</a>
         </div>
         <div class="tarjeta">
+          <a href="https://ayudaencamino.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🚚</span>
+          <span class="tarjeta-cat">Centros de Acopio</span>
+          <h3>Ayuda en Camino</h3>
+          <p>Centros de acopio, refugios y ONGs publican sus necesidades en tiempo real. Encuentra dónde llevar tus donaciones y haz que lleguen a quienes más las necesitan.</p>
+        </div>
+        <div class="tarjeta">
+          <a href="https://voluntariosprofesionales.vercel.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🤝</span>
           <span class="tarjeta-cat">Voluntarios</span>
           <h3>Voluntarios Profesionales</h3>
           <p>Conecta voluntarios con ONGs. Si eres médico, bombero, ingeniero, psicólogo, traductor u otro profesional, regístrate para ayudar.</p>
-          <a href="https://voluntariosprofesionales.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-ir">Registrarse como voluntario →</a>
         </div>
       </div>
     </div>
