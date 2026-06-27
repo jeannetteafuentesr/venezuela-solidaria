@@ -96,13 +96,43 @@
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid rgba(0,0,0,0.07);
       padding: 0.65rem 1.5rem;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
     }
 
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      justify-self: end;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--texto2);
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
+      letter-spacing: 0.06em;
+      transition: color .15s, background .15s;
+      font-family: inherit;
+    }
+
+    .lang-btn:hover { color: var(--texto); }
+
+    .lang-btn.lang-active {
+      color: var(--azul);
+      background: rgba(0,56,147,0.08);
+    }
+
+    .lang-sep { font-size: 0.6rem; color: #d1d1d6; user-select: none; }
+
     .header-left {
+      grid-column: 2;
       display: flex;
       align-items: center;
       gap: 0.45rem;
@@ -469,7 +499,7 @@
 
   <a href="https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims" target="_blank" rel="noopener noreferrer" class="banner-gfm">
     <span class="banner-gfm-logo">GoFundMe</span>
-    <span class="banner-gfm-text">Dona desde el exterior para las víctimas del terremoto</span>
+    <span class="banner-gfm-text" data-en="Donate from abroad for earthquake victims">Dona desde el exterior para las víctimas del terremoto</span>
     <span class="banner-gfm-arrow">→</span>
   </a>
 
@@ -478,7 +508,12 @@
   <header>
     <div class="header-left">
       <span class="header-emoji">🇻🇪</span>
-      <h1>Directorio Sismo</h1>
+      <h1 data-en="Earthquake Directory">Directorio Sismo</h1>
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-es" class="lang-btn lang-active" onclick="setLang('es')">ES</button>
+      <span class="lang-sep">|</span>
+      <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
   </header>
 
@@ -486,344 +521,351 @@
 
     <!-- ── DESCRIPCIÓN ── -->
     <div style="background:#fff;border-radius:20px;border:1px solid var(--borde);padding:1.1rem 1.25rem;margin-bottom:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);">
-      <p style="font-size:1rem;color:var(--texto2);line-height:1.6;">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
-      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;">Última actualización: 27 de junio de 2026 · 6:35 AM (hora Venezuela)</p>
+      <p style="font-size:1rem;color:var(--texto2);line-height:1.6;" data-en="Directory of verified websites and files to help earthquake victims in Venezuela. All information is reviewed before being published.">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
+      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: June 27, 2026 · 6:35 AM (Venezuela time)">Última actualización: 27 de junio de 2026 · 6:35 AM (hora Venezuela)</p>
     </div>
 
     <!-- ── RECURSOS POR CATEGORÍA ── -->
 
     <!-- Salud y Médico -->
     <div class="categoria-grupo">
-      <h2 class="categoria-titulo">🩺 Salud y Médicos</h2>
+      <h2 class="categoria-titulo" data-en="🩺 Health &amp; Medical">🩺 Salud y Médicos</h2>
       <div class="grid">
         <div class="tarjeta">
           <a href="https://hospitalesenvenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🏥</span>
-          <span class="tarjeta-cat">Salud</span>
-          <h3>Hospitales en Venezuela</h3>
-          <p>Busca a tus familiares en los centros de salud. Consulta qué hospitales y clínicas tienen pacientes ingresados tras el terremoto.</p>
+          <span class="tarjeta-cat" data-en="Health">Salud</span>
+          <h3 data-en="Hospitals in Venezuela">Hospitales en Venezuela</h3>
+          <p data-en="Find your family members at health centers. Check which hospitals and clinics have patients admitted after the earthquake.">Busca a tus familiares en los centros de salud. Consulta qué hospitales y clínicas tienen pacientes ingresados tras el terremoto.</p>
         </div>
         <div class="tarjeta">
           <a href="https://drive.google.com/drive/folders/1o36ifaRz45kAs5rKzci49aD0mP5JB_YI" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📋</span>
-          <span class="tarjeta-cat">Salud</span>
-          <h3>Lista de Ingresados en Hospitales</h3>
-          <p>Listado de personas ingresadas en centros de salud tras el terremoto. Consulta si un familiar está hospitalizado.</p>
+          <span class="tarjeta-cat" data-en="Health">Salud</span>
+          <h3 data-en="Hospital Admissions List">Lista de Ingresados en Hospitales</h3>
+          <p data-en="List of people admitted to health centers after the earthquake. Check if a family member is hospitalized.">Listado de personas ingresadas en centros de salud tras el terremoto. Consulta si un familiar está hospitalizado.</p>
         </div>
         <div class="tarjeta">
           <a href="https://escuchactiva.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🧠</span>
-          <span class="tarjeta-cat">Salud Mental</span>
-          <h3>Escucha Activa – Apoyo Psicológico</h3>
-          <p>Asistencia psicológica gratuita para personas afectadas por el terremoto. Psicólogos voluntarios disponibles para escucharte y acompañarte.</p>
+          <span class="tarjeta-cat" data-en="Mental Health">Salud Mental</span>
+          <h3 data-en="Active Listening – Psychological Support">Escucha Activa – Apoyo Psicológico</h3>
+          <p data-en="Free psychological assistance for people affected by the earthquake. Volunteer psychologists available to listen and support you.">Asistencia psicológica gratuita para personas afectadas por el terremoto. Psicólogos voluntarios disponibles para escucharte y acompañarte.</p>
         </div>
         <div class="tarjeta">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3EebwRjaZOypFhouWQn3Nh3JynJm8p92YPE5RuVRiQlEfng/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">👨‍⚕️</span>
-          <span class="tarjeta-cat">Consulta Médica</span>
-          <h3>Consulta Médica Online Gratis</h3>
-          <p>Regístrate para recibir una consulta médica online gratuita con profesionales de la salud.</p>
+          <span class="tarjeta-cat" data-en="Medical Consultation">Consulta Médica</span>
+          <h3 data-en="Free Online Medical Consultation">Consulta Médica Online Gratis</h3>
+          <p data-en="Register to receive a free online medical consultation with health professionals.">Regístrate para recibir una consulta médica online gratuita con profesionales de la salud.</p>
         </div>
         <div class="tarjeta">
           <a href="https://drive.google.com/file/d/1p2C2FDBTM-AGO-xk8ViA_5nBB7a9QhZn/view" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🦴</span>
-          <span class="tarjeta-cat">Impresión 3D</span>
-          <h3>Yesos por Impresión 3D</h3>
-          <p>Archivo listo para imprimir yesos ortopédicos en 3D para víctimas con fracturas. Si tienes una impresora 3D, descarga el archivo y ayuda.</p>
+          <span class="tarjeta-cat" data-en="3D Printing">Impresión 3D</span>
+          <h3 data-en="3D Printed Casts">Yesos por Impresión 3D</h3>
+          <p data-en="Ready-to-print file for 3D orthopedic casts for fracture victims. If you have a 3D printer, download the file and help.">Archivo listo para imprimir yesos ortopédicos en 3D para víctimas con fracturas. Si tienes una impresora 3D, descarga el archivo y ayuda.</p>
         </div>
       </div>
     </div>
 
     <!-- Personas Desaparecidas -->
     <div class="categoria-grupo">
-      <h2 class="categoria-titulo">🔍 Personas Desaparecidas</h2>
+      <h2 class="categoria-titulo" data-en="🔍 Missing Persons">🔍 Personas Desaparecidas</h2>
       <div class="grid">
         <div class="tarjeta">
           <a href="https://desaparecidosterremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">👥</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Personas Desaparecidas</h3>
-          <p>Plataforma para reportar o buscar personas desaparecidas tras el terremoto. Publica o consulta casos de familiares y conocidos.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="Missing Persons">Personas Desaparecidas</h3>
+          <p data-en="Platform to report or search for missing persons after the earthquake. Post or consult cases of family members and acquaintances.">Plataforma para reportar o buscar personas desaparecidas tras el terremoto. Publica o consulta casos de familiares y conocidos.</p>
         </div>
         <div class="tarjeta">
           <a href="https://buscaenlistasvzla.info/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🗂️</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Busca en Listas VZla</h3>
-          <p>Escribe nombre, apellido o cédula — los buscaremos en las listas de hospitales y refugios que tenemos.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="Search VZla Lists">Busca en Listas VZla</h3>
+          <p data-en="Enter a name, surname or ID — we'll search our hospital and shelter lists for you.">Escribe nombre, apellido o cédula — los buscaremos en las listas de hospitales y refugios que tenemos.</p>
         </div>
         <div class="tarjeta">
           <a href="https://radarvzla.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📍</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Mapa La Guaira</h3>
-          <p>Mapa de La Guaira que permite ubicar rápidamente a las víctimas del terremoto.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="La Guaira Map">Mapa La Guaira</h3>
+          <p data-en="Map of La Guaira to quickly locate earthquake victims.">Mapa de La Guaira que permite ubicar rápidamente a las víctimas del terremoto.</p>
         </div>
         <div class="tarjeta">
           <a href="https://sosenvenezuela.com/sos/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🆘</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>SOS en Venezuela</h3>
-          <p>Ubicación de centros de ayuda y hospitales en el mapa. Encuentra el punto de ayuda más cercano.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="SOS in Venezuela">SOS en Venezuela</h3>
+          <p data-en="Location of aid centers and hospitals on the map. Find the nearest help point.">Ubicación de centros de ayuda y hospitales en el mapa. Encuentra el punto de ayuda más cercano.</p>
         </div>
         <div class="tarjeta">
           <a href="https://venezuelatebusca.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">👤</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Venezuela Te Busca</h3>
-          <p>Plataforma nacional de búsqueda de personas desaparecidas. Registra a un familiar o consulta listados actualizados.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="Venezuela Searches for You">Venezuela Te Busca</h3>
+          <p data-en="National platform for searching missing persons. Register a family member or consult updated listings.">Plataforma nacional de búsqueda de personas desaparecidas. Registra a un familiar o consulta listados actualizados.</p>
         </div>
         <div class="tarjeta">
           <a href="https://redsonadoras.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📡</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Hasta Encontrarles – Red Sonadoras</h3>
-          <p>Red de apoyo para familias de personas desaparecidas. Comparte la información y amplía la búsqueda.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="Until We Find Them – Red Sonadoras">Hasta Encontrarles – Red Sonadoras</h3>
+          <p data-en="Support network for families of missing persons. Share information and expand the search.">Red de apoyo para familias de personas desaparecidas. Comparte la información y amplía la búsqueda.</p>
         </div>
         <div class="tarjeta">
           <a href="https://enlazavenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🛟</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Enlaza Venezuela</h3>
-          <p>Conecta a familiares en el exterior con personas en Venezuela. Publica o busca casos para reunir familias separadas.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="Connect Venezuela">Enlaza Venezuela</h3>
+          <p data-en="Connects family members abroad with people in Venezuela. Post or search cases to reunite separated families.">Conecta a familiares en el exterior con personas en Venezuela. Publica o busca casos para reunir familias separadas.</p>
         </div>
         <div class="tarjeta">
           <a href="https://localizadosvenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">✅</span>
-          <span class="tarjeta-cat">Personas</span>
-          <h3>Localizados Venezuela</h3>
-          <p>Registro de personas ya localizadas tras el sismo. Consulta si tu familiar ya fue encontrado.</p>
+          <span class="tarjeta-cat" data-en="Persons">Personas</span>
+          <h3 data-en="Located Venezuela">Localizados Venezuela</h3>
+          <p data-en="Registry of people already located after the earthquake. Check if your family member has been found.">Registro de personas ya localizadas tras el sismo. Consulta si tu familiar ya fue encontrado.</p>
         </div>
       </div>
     </div>
 
     <!-- Mascotas -->
     <div class="categoria-grupo">
-      <h2 class="categoria-titulo">🐾 Mascotas Perdidas</h2>
+      <h2 class="categoria-titulo" data-en="🐾 Lost Pets">🐾 Mascotas Perdidas</h2>
       <div class="grid">
         <div class="tarjeta">
           <a href="https://www.huellascan.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🐕</span>
-          <span class="tarjeta-cat">Mascotas</span>
-          <h3>HuellasCan – Mascotas Perdidas</h3>
-          <p>Plataforma para reportar mascotas perdidas o encontradas durante el sismo. Ayuda a reunir familias con sus animales.</p>
+          <span class="tarjeta-cat" data-en="Pets">Mascotas</span>
+          <h3 data-en="HuellasCan – Lost Pets">HuellasCan – Mascotas Perdidas</h3>
+          <p data-en="Platform to report lost or found pets during the earthquake. Helps reunite families with their animals.">Plataforma para reportar mascotas perdidas o encontradas durante el sismo. Ayuda a reunir familias con sus animales.</p>
         </div>
         <div class="tarjeta">
           <a href="https://patitasasalvovenezuela.org/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🐶</span>
-          <span class="tarjeta-cat">Mascotas</span>
-          <h3>Patitas a Salvo Venezuela</h3>
-          <p>Reporta una mascota perdida, avisa si encontraste una, o ayuda con refugios e insumos.</p>
+          <span class="tarjeta-cat" data-en="Pets">Mascotas</span>
+          <h3 data-en="Safe Paws Venezuela">Patitas a Salvo Venezuela</h3>
+          <p data-en="Report a lost pet, notify if you found one, or help with shelters and supplies.">Reporta una mascota perdida, avisa si encontraste una, o ayuda con refugios e insumos.</p>
         </div>
         <div class="tarjeta">
           <a href="https://mascotasporvenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🐱</span>
-          <span class="tarjeta-cat">Mascotas</span>
-          <h3>Mascotas por Venezuela</h3>
-          <p>Directorio de mascotas perdidas y encontradas durante el terremoto. Reporta o busca animales desaparecidos.</p>
+          <span class="tarjeta-cat" data-en="Pets">Mascotas</span>
+          <h3 data-en="Pets for Venezuela">Mascotas por Venezuela</h3>
+          <p data-en="Directory of pets lost and found during the earthquake. Report or search for missing animals.">Directorio de mascotas perdidas y encontradas durante el terremoto. Reporta o busca animales desaparecidos.</p>
         </div>
         <div class="tarjeta">
           <a href="https://migenteve.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🦮</span>
-          <span class="tarjeta-cat">Mascotas</span>
-          <h3>Mi Gente VE</h3>
-          <p>Plataforma de ayuda para mascotas afectadas por el sismo. Conecta a rescatistas con dueños que buscan a sus animales.</p>
+          <span class="tarjeta-cat" data-en="Pets">Mascotas</span>
+          <h3 data-en="Mi Gente VE">Mi Gente VE</h3>
+          <p data-en="Help platform for pets affected by the earthquake. Connects rescuers with owners searching for their animals.">Plataforma de ayuda para mascotas afectadas por el sismo. Conecta a rescatistas con dueños que buscan a sus animales.</p>
         </div>
         <div class="tarjeta tarjeta-ig">
           <a href="https://www.instagram.com/veterinariaavila/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <span class="tarjeta-icon">🏥</span>
-          <span class="tarjeta-cat">Mascotas · Instagram</span>
-          <h3>Refugio para Mascotas – Caracas</h3>
-          <p>Refugio veterinario en Caracas que ofrece atención a mascotas afectadas por el sismo. @veterinariaavila</p>
+          <span class="tarjeta-cat" data-en="Pets · Instagram">Mascotas · Instagram</span>
+          <h3 data-en="Pet Shelter – Caracas">Refugio para Mascotas – Caracas</h3>
+          <p data-en="Veterinary shelter in Caracas offering care for pets affected by the earthquake. @veterinariaavila">Refugio veterinario en Caracas que ofrece atención a mascotas afectadas por el sismo. @veterinariaavila</p>
         </div>
         <div class="tarjeta tarjeta-ig">
           <a href="https://www.instagram.com/isaacdvieirasilguero_/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <span class="tarjeta-icon">💉</span>
-          <span class="tarjeta-cat">Mascotas · Instagram</span>
-          <h3>Servicio Veterinario – Caracas</h3>
-          <p>Veterinario voluntario en Caracas atendiendo mascotas afectadas. @isaacdvieirasilguero_</p>
+          <span class="tarjeta-cat" data-en="Pets · Instagram">Mascotas · Instagram</span>
+          <h3 data-en="Veterinary Service – Caracas">Servicio Veterinario – Caracas</h3>
+          <p data-en="Volunteer veterinarian in Caracas attending to affected pets. @isaacdvieirasilguero_">Veterinario voluntario en Caracas atendiendo mascotas afectadas. @isaacdvieirasilguero_</p>
         </div>
         <div class="tarjeta tarjeta-ig">
           <a href="https://www.instagram.com/reddeapoyocanino/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <span class="tarjeta-icon">🐩</span>
-          <span class="tarjeta-cat">Mascotas · Instagram</span>
-          <h3>Red de Apoyo Canino – Caracas</h3>
-          <p>Red veterinaria de apoyo para perros afectados por el sismo en Caracas. @reddeapoyocanino</p>
+          <span class="tarjeta-cat" data-en="Pets · Instagram">Mascotas · Instagram</span>
+          <h3 data-en="Canine Support Network – Caracas">Red de Apoyo Canino – Caracas</h3>
+          <p data-en="Veterinary support network for dogs affected by the earthquake in Caracas. @reddeapoyocanino">Red veterinaria de apoyo para perros afectados por el sismo en Caracas. @reddeapoyocanino</p>
         </div>
       </div>
     </div>
 
     <!-- Ingenieros y Estructuras -->
     <div class="categoria-grupo">
-      <h2 class="categoria-titulo">🏗️ Ingenieros y Estructuras</h2>
+      <h2 class="categoria-titulo" data-en="🏗️ Engineers &amp; Structures">🏗️ Ingenieros y Estructuras</h2>
       <div class="grid">
         <div class="tarjeta">
           <a href="https://www.sismoayudave.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🏛️</span>
-          <span class="tarjeta-cat">Ingenieros Voluntarios</span>
-          <h3>Sismo Ayuda Ve</h3>
-          <p>Conecta con ingenieros voluntarios para evaluar los daños estructurales de tu vivienda.</p>
+          <span class="tarjeta-cat" data-en="Volunteer Engineers">Ingenieros Voluntarios</span>
+          <h3 data-en="Sismo Ayuda Ve">Sismo Ayuda Ve</h3>
+          <p data-en="Connect with volunteer engineers to assess the structural damage to your home.">Conecta con ingenieros voluntarios para evaluar los daños estructurales de tu vivienda.</p>
         </div>
         <div class="tarjeta">
           <a href="https://terremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🗺️</span>
-          <span class="tarjeta-cat">Mapa de Daños</span>
-          <h3>Mapa de Daños – Terremoto Venezuela</h3>
-          <p>Mapa interactivo con el reporte de daños estructurales en edificios y viviendas afectadas por el sismo. Consulta o reporta daños en tu zona.</p>
+          <span class="tarjeta-cat" data-en="Damage Map">Mapa de Daños</span>
+          <h3 data-en="Damage Map – Venezuela Earthquake">Mapa de Daños – Terremoto Venezuela</h3>
+          <p data-en="Interactive map with reports of structural damage to buildings and homes affected by the earthquake. Consult or report damage in your area.">Mapa interactivo con el reporte de daños estructurales en edificios y viviendas afectadas por el sismo. Consulta o reporta daños en tu zona.</p>
         </div>
       </div>
     </div>
 
     <!-- Donaciones, Acopio y Voluntariado -->
     <div class="categoria-grupo">
-      <h2 class="categoria-titulo">🤝 Donaciones, Acopio y Voluntariado</h2>
+      <h2 class="categoria-titulo" data-en="🤝 Donations, Aid &amp; Volunteering">🤝 Donaciones, Acopio y Voluntariado</h2>
       <div class="grid">
+        <div class="tarjeta">
+          <a href="https://justgiving.com/campaign/venezuelaearthquake2026" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">💝</span>
+          <span class="tarjeta-cat" data-en="Donations">Donaciones</span>
+          <h3 data-en="Healing Venezuela">Healing Venezuela</h3>
+          <p data-en="Donations for the NGO Healing Venezuela, on the ground delivering supplies directly to rescuers.">Donaciones para la ONG Healing Venezuela, en terreno entregando material a los rescatistas.</p>
+        </div>
         <div class="tarjeta">
           <a href="https://docs.google.com/spreadsheets/d/1OTNQGMsK3nU2wqy00rtPPcwsSzAlorWeP-uIotWpkxM/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📦</span>
-          <span class="tarjeta-cat">Centros de Acopio</span>
-          <h3>Centros de Acopio</h3>
-          <p>Listado completo de centros de acopio en Venezuela y en el mundo donde puedes entregar o recibir donaciones de alimentos, ropa y medicinas.</p>
+          <span class="tarjeta-cat" data-en="Collection Centers">Centros de Acopio</span>
+          <h3 data-en="Collection Centers">Centros de Acopio</h3>
+          <p data-en="Complete list of collection centers in Venezuela and worldwide where you can drop off or receive donations of food, clothing and medicine.">Listado completo de centros de acopio en Venezuela y en el mundo donde puedes entregar o recibir donaciones de alimentos, ropa y medicinas.</p>
         </div>
         <div class="tarjeta">
           <a href="https://ayudaencamino.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🚚</span>
-          <span class="tarjeta-cat">Centros de Acopio</span>
-          <h3>Ayuda en Camino</h3>
-          <p>Centros de acopio, refugios y ONGs publican sus necesidades en tiempo real. Encuentra dónde llevar tus donaciones y haz que lleguen a quienes más las necesitan.</p>
+          <span class="tarjeta-cat" data-en="Collection Centers">Centros de Acopio</span>
+          <h3 data-en="Help on the Way">Ayuda en Camino</h3>
+          <p data-en="Collection centers, shelters and NGOs post their needs in real time. Find where to take your donations and get them to those who need them most.">Centros de acopio, refugios y ONGs publican sus necesidades en tiempo real. Encuentra dónde llevar tus donaciones y haz que lleguen a quienes más las necesitan.</p>
         </div>
         <div class="tarjeta">
           <a href="https://voluntariosprofesionales.vercel.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🤝</span>
-          <span class="tarjeta-cat">Voluntarios</span>
-          <h3>Voluntarios Profesionales</h3>
-          <p>Conecta voluntarios con ONGs. Si eres médico, bombero, ingeniero, psicólogo, traductor u otro profesional, regístrate para ayudar.</p>
+          <span class="tarjeta-cat" data-en="Volunteers">Voluntarios</span>
+          <h3 data-en="Professional Volunteers">Voluntarios Profesionales</h3>
+          <p data-en="Connects volunteers with NGOs. If you're a doctor, firefighter, engineer, psychologist, translator or other professional, register to help.">Conecta voluntarios con ONGs. Si eres médico, bombero, ingeniero, psicólogo, traductor u otro profesional, regístrate para ayudar.</p>
         </div>
         <div class="tarjeta">
           <a href="https://caracasayuda.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🍽️</span>
-          <span class="tarjeta-cat">Donaciones</span>
-          <h3>Caracas Ayuda</h3>
-          <p>Puntos de distribución de alimentos y agua en Caracas. Consulta horarios y ubicaciones de los centros más cercanos.</p>
+          <span class="tarjeta-cat" data-en="Donations">Donaciones</span>
+          <h3 data-en="Caracas Helps">Caracas Ayuda</h3>
+          <p data-en="Food and water distribution points in Caracas. Check schedules and locations of the nearest centers.">Puntos de distribución de alimentos y agua en Caracas. Consulta horarios y ubicaciones de los centros más cercanos.</p>
         </div>
         <div class="tarjeta">
           <a href="https://acopios-refugios.vercel.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🏕️</span>
-          <span class="tarjeta-cat">Acopio</span>
-          <h3>Mapa Acopios y Refugios</h3>
-          <p>Mapa actualizado de centros de acopio y refugios activos en todo el país. Encuentra el más cercano a tu zona.</p>
+          <span class="tarjeta-cat" data-en="Collection">Acopio</span>
+          <h3 data-en="Collection Centers &amp; Shelters Map">Mapa Acopios y Refugios</h3>
+          <p data-en="Updated map of active collection centers and shelters across the country. Find the one closest to your area.">Mapa actualizado de centros de acopio y refugios activos en todo el país. Encuentra el más cercano a tu zona.</p>
         </div>
         <div class="tarjeta">
           <a href="https://vzlaayuda.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🤲</span>
-          <span class="tarjeta-cat">Donaciones</span>
-          <h3>VZla Ayuda</h3>
-          <p>Directorio de organizaciones y puntos de apoyo para afectados del terremoto en Venezuela.</p>
+          <span class="tarjeta-cat" data-en="Donations">Donaciones</span>
+          <h3 data-en="VZla Helps">VZla Ayuda</h3>
+          <p data-en="Directory of organizations and support points for earthquake victims in Venezuela.">Directorio de organizaciones y puntos de apoyo para afectados del terremoto en Venezuela.</p>
         </div>
       </div>
     </div>
 
     <!-- Refugios y Servicios -->
     <div class="categoria-grupo">
-      <h2 class="categoria-titulo">🏠 Refugios y Servicios</h2>
+      <h2 class="categoria-titulo" data-en="🏠 Shelters &amp; Services">🏠 Refugios y Servicios</h2>
       <div class="grid">
         <div class="tarjeta">
           <a href="https://hogarbambi.org/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🏡</span>
-          <span class="tarjeta-cat">Refugio</span>
-          <h3>Hogar Bambi</h3>
-          <p>Refugio y albergue para niños y familias desplazadas por el sismo. Contacta para solicitar o brindar alojamiento.</p>
+          <span class="tarjeta-cat" data-en="Shelter">Refugio</span>
+          <h3 data-en="Hogar Bambi">Hogar Bambi</h3>
+          <p data-en="Shelter and housing for children and families displaced by the earthquake. Contact to request or provide accommodation.">Refugio y albergue para niños y familias desplazadas por el sismo. Contacta para solicitar o brindar alojamiento.</p>
         </div>
         <div class="tarjeta">
           <a href="https://ayuda.espacioraizconsciente.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🚗</span>
-          <span class="tarjeta-cat">Servicios</span>
-          <h3>Espacio Raíz Consciente</h3>
-          <p>Servicios de apoyo y transporte para afectados. Solicita o coordina ayuda logística en tu zona.</p>
+          <span class="tarjeta-cat" data-en="Services">Servicios</span>
+          <h3 data-en="Espacio Raíz Consciente">Espacio Raíz Consciente</h3>
+          <p data-en="Support and transportation services for those affected. Request or coordinate logistical help in your area.">Servicios de apoyo y transporte para afectados. Solicita o coordina ayuda logística en tu zona.</p>
         </div>
         <div class="tarjeta">
           <a href="https://interp-aid.lovable.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🗣️</span>
-          <span class="tarjeta-cat">Servicios</span>
-          <h3>Interp Aid</h3>
-          <p>Asistencia con interpretación y comunicación para afectados con barreras idiomáticas o necesidades especiales.</p>
+          <span class="tarjeta-cat" data-en="Services">Servicios</span>
+          <h3 data-en="Interp Aid">Interp Aid</h3>
+          <p data-en="Interpretation and communication assistance for those affected by language barriers or special needs.">Asistencia con interpretación y comunicación para afectados con barreras idiomáticas o necesidades especiales.</p>
         </div>
         <div class="tarjeta-tel">
-          <span class="tarjeta-cat">Traslados · Caracas</span>
-          <h3>Tatiana Suinaga – traslados de insumos en Caracas</h3>
-          <p>Ofrece traslados de insumos dentro de Caracas.</p>
+          <span class="tarjeta-cat" data-en="Transport · Caracas">Traslados · Caracas</span>
+          <h3 data-en="Tatiana Suinaga – supply transport in Caracas">Tatiana Suinaga – traslados de insumos en Caracas</h3>
+          <p data-en="Offers supply transport within Caracas.">Ofrece traslados de insumos dentro de Caracas.</p>
           <span class="tarjeta-tel-numero">📞 +58 04241226741</span>
         </div>
       </div>
     </div>
 
     <!-- ── FORMULARIOS ── -->
-    <h2 class="sec-titulo" id="formularios">✉️ Escríbenos</h2>
+    <h2 class="sec-titulo" id="formularios" data-en="✉️ Contact Us">✉️ Escríbenos</h2>
 
     <div class="acordeon">
 
       <!-- Feedback -->
       <details>
-        <summary>💬 Contáctanos</summary>
+        <summary data-en="💬 Contact Us">💬 Contáctanos</summary>
         <div class="form-card">
           <form name="comentarios" method="POST" data-netlify="true" action="gracias.html">
             <input type="hidden" name="form-name" value="comentarios" />
             <div class="fg">
-              <label for="n-c">Tu nombre <span style="color:#aaa;font-weight:400">(opcional)</span></label>
-              <input type="text" id="n-c" name="nombre" placeholder="Ej. María García" />
+              <label for="n-c"><span data-en="Your name">Tu nombre</span> <span style="color:#aaa;font-weight:400" data-en="(optional)">(opcional)</span></label>
+              <input type="text" id="n-c" name="nombre" placeholder="Ej. María García" data-en-ph="e.g. María García" />
             </div>
             <div class="fg">
-              <label for="e-c">Correo electrónico <span style="color:#aaa;font-weight:400">(opcional)</span></label>
+              <label for="e-c"><span data-en="Email address">Correo electrónico</span> <span style="color:#aaa;font-weight:400" data-en="(optional)">(opcional)</span></label>
               <input type="email" id="e-c" name="correo" placeholder="tu@correo.com" />
             </div>
             <div class="fg">
-              <label for="msg">Mensaje *</label>
-              <textarea id="msg" name="mensaje" required placeholder="Tu comentario, corrección o sugerencia..."></textarea>
+              <label for="msg" data-en="Message *">Mensaje *</label>
+              <textarea id="msg" name="mensaje" required placeholder="Tu comentario, corrección o sugerencia..." data-en-ph="Your comment, correction or suggestion..."></textarea>
             </div>
-            <button type="submit" class="btn-enviar">Enviar comentario</button>
-            <p class="nota-form">Tu mensaje llega directamente al equipo que mantiene esta página.</p>
+            <button type="submit" class="btn-enviar" data-en="Send message">Enviar comentario</button>
+            <p class="nota-form" data-en="Your message goes directly to the team that maintains this page.">Tu mensaje llega directamente al equipo que mantiene esta página.</p>
           </form>
         </div>
       </details>
 
       <!-- Sugerir recurso -->
       <details id="sugerir">
-        <summary>🔗 Sugerir un nuevo recurso</summary>
+        <summary data-en="🔗 Suggest a new resource">🔗 Sugerir un nuevo recurso</summary>
         <div class="form-card">
           <form name="sugerencias" method="POST" data-netlify="true" action="gracias.html">
             <input type="hidden" name="form-name" value="sugerencias" />
             <div class="fg">
-              <label for="n-r">Nombre del recurso *</label>
-              <input type="text" id="n-r" name="nombre_recurso" required placeholder="Ej. Albergues en Caracas" />
+              <label for="n-r" data-en="Resource name *">Nombre del recurso *</label>
+              <input type="text" id="n-r" name="nombre_recurso" required placeholder="Ej. Albergues en Caracas" data-en-ph="e.g. Shelters in Caracas" />
             </div>
             <div class="fg">
               <label for="u-r">URL *</label>
               <input type="url" id="u-r" name="url" required placeholder="https://..." />
             </div>
             <div class="fg">
-              <label for="d-r">Descripción breve *</label>
-              <textarea id="d-r" name="descripcion" required placeholder="¿Qué ofrece esta página? ¿A quién ayuda?" style="min-height:75px;"></textarea>
+              <label for="d-r" data-en="Brief description *">Descripción breve *</label>
+              <textarea id="d-r" name="descripcion" required placeholder="¿Qué ofrece esta página? ¿A quién ayuda?" data-en-ph="What does this page offer? Who does it help?" style="min-height:75px;"></textarea>
             </div>
             <div class="fg">
-              <label for="c-r">Categoría</label>
+              <label for="c-r" data-en="Category">Categoría</label>
               <select id="c-r" name="categoria">
-                <option value="">Selecciona una categoría</option>
-                <option>Personas desaparecidas / encontradas</option>
-                <option>Mascotas</option>
-                <option>Centros de acopio</option>
-                <option>Salud / Médico</option>
-                <option>Ingenieros / Voluntarios</option>
-                <option>Donaciones</option>
-                <option>Albergues</option>
-                <option>Otro</option>
+                <option value="" data-en="Select a category">Selecciona una categoría</option>
+                <option data-en="Missing / found persons">Personas desaparecidas / encontradas</option>
+                <option data-en="Pets">Mascotas</option>
+                <option data-en="Collection centers">Centros de acopio</option>
+                <option data-en="Health / Medical">Salud / Médico</option>
+                <option data-en="Engineers / Volunteers">Ingenieros / Voluntarios</option>
+                <option data-en="Donations">Donaciones</option>
+                <option data-en="Shelters">Albergues</option>
+                <option data-en="Other">Otro</option>
               </select>
             </div>
             <div class="fg">
-              <label for="ct-r">Tu contacto <span style="color:#aaa;font-weight:400">(opcional)</span></label>
-              <input type="text" id="ct-r" name="contacto" placeholder="Nombre o correo, por si tenemos preguntas" />
+              <label for="ct-r"><span data-en="Your contact">Tu contacto</span> <span style="color:#aaa;font-weight:400" data-en="(optional)">(opcional)</span></label>
+              <input type="text" id="ct-r" name="contacto" placeholder="Nombre o correo, por si tenemos preguntas" data-en-ph="Name or email, in case we have questions" />
             </div>
-            <button type="submit" class="btn-enviar">Enviar sugerencia</button>
-            <p class="nota-form">⚠️ Todos los recursos son revisados antes de publicarse.</p>
+            <button type="submit" class="btn-enviar" data-en="Send suggestion">Enviar sugerencia</button>
+            <p class="nota-form" data-en="⚠️ All resources are reviewed before being published.">⚠️ Todos los recursos son revisados antes de publicarse.</p>
           </form>
         </div>
       </details>
@@ -833,10 +875,57 @@
   </main>
 
   <footer>
-    <p>🇻🇪 <strong>Venezuela Solidaria</strong> — Hecho con amor para Venezuela</p>
-    <p style="margin-top:.4rem;">Esta página no tiene fines de lucro. La información es verificada antes de publicarse.</p>
+    <p>🇻🇪 <strong>Venezuela Solidaria</strong> — <span data-en="Made with love for Venezuela">Hecho con amor para Venezuela</span></p>
+    <p style="margin-top:.4rem;" data-en="This page is non-profit. Information is verified before being published.">Esta página no tiene fines de lucro. La información es verificada antes de publicarse.</p>
     <a href="admin.html" class="admin-tiny">· admin ·</a>
   </footer>
+
+  <script>
+    (function () {
+      function setLang(lang) {
+        // swap text content
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          if (lang === 'en') {
+            if (!el.dataset.es) el.dataset.es = el.textContent;
+            el.textContent = el.dataset.en;
+          } else if (el.dataset.es) {
+            el.textContent = el.dataset.es;
+          }
+        });
+        // swap placeholders
+        document.querySelectorAll('[data-en-ph]').forEach(function (el) {
+          if (lang === 'en') {
+            if (!el.dataset.esPh) el.dataset.esPh = el.placeholder;
+            el.placeholder = el.dataset.enPh;
+          } else if (el.dataset.esPh) {
+            el.placeholder = el.dataset.esPh;
+          }
+        });
+        // swap select options
+        document.querySelectorAll('select option[data-en]').forEach(function (el) {
+          if (lang === 'en') {
+            if (!el.dataset.es) el.dataset.es = el.textContent;
+            el.textContent = el.dataset.en;
+          } else if (el.dataset.es) {
+            el.textContent = el.dataset.es;
+          }
+        });
+        document.documentElement.lang = lang;
+        localStorage.setItem('sismo-lang', lang);
+        var btnEs = document.getElementById('btn-es');
+        var btnEn = document.getElementById('btn-en');
+        if (btnEs) { btnEs.classList.remove('lang-active'); }
+        if (btnEn) { btnEn.classList.remove('lang-active'); }
+        if (lang === 'es' && btnEs) { btnEs.classList.add('lang-active'); }
+        if (lang === 'en' && btnEn) { btnEn.classList.add('lang-active'); }
+      }
+
+      window.setLang = setLang;
+
+      var saved = localStorage.getItem('sismo-lang');
+      if (saved === 'en') setLang('en');
+    })();
+  </script>
 
 </body>
 </html>
