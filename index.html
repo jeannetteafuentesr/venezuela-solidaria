@@ -252,6 +252,58 @@
       transition: background .15s, color .15s;
     }
 
+    .tarjeta-link.ig:hover svg {
+      background: #C13584;
+      color: #fff;
+    }
+
+    .tarjeta-tel {
+      background: #dbeafe;
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      border: 1px solid #bfdbfe;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .tarjeta.tarjeta-ig {
+      border: none;
+    }
+
+    .tarjeta.tarjeta-ig::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 1px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .tarjeta-tel h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--texto);
+      line-height: 1.3;
+    }
+
+    .tarjeta-tel p {
+      font-size: 0.8rem;
+      color: var(--texto2);
+      line-height: 1.5;
+    }
+
+    .tarjeta-tel-numero {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--texto);
+      margin-top: .1rem;
+    }
+
     .tarjeta-link:hover svg {
       background: #002770;
       color: #fff;
@@ -577,6 +629,27 @@
           <h3>Mi Gente VE</h3>
           <p>Plataforma de ayuda para mascotas afectadas por el sismo. Conecta a rescatistas con dueños que buscan a sus animales.</p>
         </div>
+        <div class="tarjeta tarjeta-ig">
+          <a href="https://www.instagram.com/veterinariaavila/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <span class="tarjeta-icon">🏥</span>
+          <span class="tarjeta-cat">Mascotas · Instagram</span>
+          <h3>Refugio para Mascotas – Caracas</h3>
+          <p>Refugio veterinario en Caracas que ofrece atención a mascotas afectadas por el sismo. @veterinariaavila</p>
+        </div>
+        <div class="tarjeta tarjeta-ig">
+          <a href="https://www.instagram.com/isaacdvieirasilguero_/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <span class="tarjeta-icon">💉</span>
+          <span class="tarjeta-cat">Mascotas · Instagram</span>
+          <h3>Servicio Veterinario – Caracas</h3>
+          <p>Veterinario voluntario en Caracas atendiendo mascotas afectadas. @isaacdvieirasilguero_</p>
+        </div>
+        <div class="tarjeta tarjeta-ig">
+          <a href="https://www.instagram.com/reddeapoyocanino/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <span class="tarjeta-icon">🐩</span>
+          <span class="tarjeta-cat">Mascotas · Instagram</span>
+          <h3>Red de Apoyo Canino – Caracas</h3>
+          <p>Red veterinaria de apoyo para perros afectados por el sismo en Caracas. @reddeapoyocanino</p>
+        </div>
       </div>
     </div>
 
@@ -674,6 +747,12 @@
           <span class="tarjeta-cat">Servicios</span>
           <h3>Interp Aid</h3>
           <p>Asistencia con interpretación y comunicación para afectados con barreras idiomáticas o necesidades especiales.</p>
+        </div>
+        <div class="tarjeta-tel">
+          <span class="tarjeta-cat">Traslados · Caracas</span>
+          <h3>Tatiana Suinaga – traslados de insumos en Caracas</h3>
+          <p>Ofrece traslados de insumos dentro de Caracas.</p>
+          <span class="tarjeta-tel-numero">📞 +58 04241226741</span>
         </div>
       </div>
     </div>
