@@ -179,6 +179,36 @@
       max-width: 640px;
     }
 
+    /* ── FILTROS ── */
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .filtro-btn {
+      background: #ebebeb;
+      color: #1d1d1f;
+      border: none;
+      border-radius: 50px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 400;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s, color .15s, font-weight .1s;
+      white-space: nowrap;
+    }
+
+    .filtro-btn:hover:not(.activo) { background: #dcdcdc; }
+
+    .filtro-btn.activo {
+      background: #1d1d1f;
+      color: #fff;
+      font-weight: 600;
+    }
+
     /* ── GRUPOS DE CATEGORÍA ── */
     .categoria-grupo {
       margin-bottom: 1.5rem;
@@ -198,6 +228,14 @@
       display: flex;
       align-items: center;
       gap: 0.45rem;
+    }
+
+    .tarjeta-url {
+      font-size: 0.67rem;
+      color: #c7c7cc;
+      margin-top: auto;
+      padding-top: 0.3rem;
+      letter-spacing: 0.01em;
     }
 
     /* ── GRID ── */
@@ -522,13 +560,24 @@
     <!-- ── DESCRIPCIÓN ── -->
     <div style="background:#fff;border-radius:20px;border:1px solid var(--borde);padding:1.1rem 1.25rem;margin-bottom:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);">
       <p style="font-size:1rem;color:var(--texto2);line-height:1.6;" data-en="Directory of verified websites and files to help earthquake victims in Venezuela. All information is reviewed before being published.">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
-      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: June 27, 2026 · 6:35 AM (Venezuela time)">Última actualización: 27 de junio de 2026 · 9:47 AM (hora Venezuela)</p>
+      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: June 27, 2026 · 6:35 AM (Venezuela time)">Última actualización: 27 de junio de 2026 · 1:14 PM (hora Venezuela)</p>
+    </div>
+
+    <!-- ── FILTROS ── -->
+    <div class="filtros">
+      <button class="filtro-btn activo" data-filtro="todo" data-en="All" onclick="filtrar('todo')">Todo</button>
+      <button class="filtro-btn" data-filtro="salud" data-en="🩺 Health" onclick="filtrar('salud')">🩺 Salud</button>
+      <button class="filtro-btn" data-filtro="personas" data-en="🔍 Persons" onclick="filtrar('personas')">🔍 Personas</button>
+      <button class="filtro-btn" data-filtro="mascotas" data-en="🐾 Pets" onclick="filtrar('mascotas')">🐾 Mascotas</button>
+      <button class="filtro-btn" data-filtro="ingenieros" data-en="🏗️ Engineers" onclick="filtrar('ingenieros')">🏗️ Ingenieros</button>
+      <button class="filtro-btn" data-filtro="donaciones" data-en="🤝 Donations" onclick="filtrar('donaciones')">🤝 Donaciones</button>
+      <button class="filtro-btn" data-filtro="refugios" data-en="🏠 Shelters" onclick="filtrar('refugios')">🏠 Refugios</button>
     </div>
 
     <!-- ── RECURSOS POR CATEGORÍA ── -->
 
     <!-- Salud y Médico -->
-    <div class="categoria-grupo">
+    <div class="categoria-grupo" data-cat="salud">
       <h2 class="categoria-titulo" data-en="🩺 Health &amp; Medical">🩺 Salud y Médicos</h2>
       <div class="grid">
         <div class="tarjeta">
@@ -553,11 +602,11 @@
           <p data-en="Free psychological assistance for people affected by the earthquake. Volunteer psychologists available to listen and support you.">Asistencia psicológica gratuita para personas afectadas por el terremoto. Psicólogos voluntarios disponibles para escucharte y acompañarte.</p>
         </div>
         <div class="tarjeta">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3EebwRjaZOypFhouWQn3Nh3JynJm8p92YPE5RuVRiQlEfng/viewform?pli=1" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <a href="https://www.medicosporvenezuela.org/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">👨‍⚕️</span>
           <span class="tarjeta-cat" data-en="Medical Consultation">Consulta Médica</span>
-          <h3 data-en="Free Online Medical Consultation">Consulta Médica Online Gratis</h3>
-          <p data-en="Register to receive a free online medical consultation with health professionals.">Regístrate para recibir una consulta médica online gratuita con profesionales de la salud.</p>
+          <h3 data-en="Médicos por Venezuela">Médicos por Venezuela</h3>
+          <p data-en="Request a free online medical or psychological consultation, or register as a volunteer doctor to help those affected.">Solicita una consulta médica o psicológica online gratis, o regístrate como médico voluntario para ayudar a los afectados.</p>
         </div>
         <div class="tarjeta">
           <a href="https://drive.google.com/file/d/1p2C2FDBTM-AGO-xk8ViA_5nBB7a9QhZn/view" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -570,7 +619,7 @@
     </div>
 
     <!-- Personas Desaparecidas -->
-    <div class="categoria-grupo">
+    <div class="categoria-grupo" data-cat="personas">
       <h2 class="categoria-titulo" data-en="🔍 Missing Persons">🔍 Personas Desaparecidas</h2>
       <div class="grid">
         <div class="tarjeta">
@@ -633,9 +682,16 @@
     </div>
 
     <!-- Mascotas -->
-    <div class="categoria-grupo">
+    <div class="categoria-grupo" data-cat="mascotas">
       <h2 class="categoria-titulo" data-en="🐾 Lost Pets">🐾 Mascotas Perdidas</h2>
       <div class="grid">
+        <div class="tarjeta">
+          <a href="https://huellasasalvo.org/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🚨</span>
+          <span class="tarjeta-cat" data-en="Pets">Mascotas</span>
+          <h3 data-en="Huellas a Salvo – Emergency Pet Platform">Huellas a Salvo – Plataforma de Emergencia</h3>
+          <p data-en="Emergency platform for animal care in Venezuela. Report pets, find veterinary help, temporary homes and collection centers. Updated every 30 seconds.">Plataforma de emergencia para el cuidado de animales. Reporta mascotas, encuentra ayuda veterinaria, hogares temporales y centros de acopio. Actualizado cada 30 segundos.</p>
+        </div>
         <div class="tarjeta">
           <a href="https://www.huellascan.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🐕</span>
@@ -696,7 +752,7 @@
     </div>
 
     <!-- Ingenieros y Estructuras -->
-    <div class="categoria-grupo">
+    <div class="categoria-grupo" data-cat="ingenieros">
       <h2 class="categoria-titulo" data-en="🏗️ Engineers &amp; Structures">🏗️ Ingenieros y Estructuras</h2>
       <div class="grid">
         <div class="tarjeta">
@@ -717,7 +773,7 @@
     </div>
 
     <!-- Donaciones, Acopio y Voluntariado -->
-    <div class="categoria-grupo">
+    <div class="categoria-grupo" data-cat="donaciones">
       <h2 class="categoria-titulo" data-en="🤝 Donations, Aid &amp; Volunteering">🤝 Donaciones, Acopio y Voluntariado</h2>
       <div class="grid">
         <div class="tarjeta">
@@ -733,6 +789,13 @@
           <span class="tarjeta-cat" data-en="Donations">Donaciones</span>
           <h3 data-en="Pan de Vida &amp; UCV Firefighters – Rescue Equipment">Pan de Vida &amp; Bomberos UCV – Equipos de Rescate</h3>
           <p data-en="Emergency campaign to purchase rescue equipment — helmets, stretchers, splints, ropes — available in Caracas for immediate delivery to response teams.">Campaña de emergencia para comprar equipos de rescate —cascos, camillas, férulas, cuerdas— disponibles en Caracas para entrega inmediata a los equipos de respuesta.</p>
+        </div>
+        <div class="tarjeta">
+          <a href="https://www.apoyovenezuela.org/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🗃️</span>
+          <span class="tarjeta-cat" data-en="Collection Centers">Centros de Acopio</span>
+          <h3 data-en="Apoyo Venezuela – Collection Centers">Apoyo Venezuela – Centros de Acopio</h3>
+          <p data-en="Centralized catalog of collection and volunteering centers inside and outside Venezuela, validated by real donors. No intermediaries, no money involved.">Catálogo centralizado de centros de acopio y voluntariado, dentro y fuera de Venezuela, validado por personas reales. Sin intermediarios, sin dinero involucrado.</p>
         </div>
         <div class="tarjeta">
           <a href="https://docs.google.com/spreadsheets/d/1OTNQGMsK3nU2wqy00rtPPcwsSzAlorWeP-uIotWpkxM/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -780,7 +843,7 @@
     </div>
 
     <!-- Refugios y Servicios -->
-    <div class="categoria-grupo">
+    <div class="categoria-grupo" data-cat="refugios">
       <h2 class="categoria-titulo" data-en="🏠 Shelters &amp; Services">🏠 Refugios y Servicios</h2>
       <div class="grid">
         <div class="tarjeta">
@@ -936,8 +999,31 @@
 
       window.setLang = setLang;
 
+      window.filtrar = function(cat) {
+        document.querySelectorAll('.categoria-grupo').forEach(function(g) {
+          g.style.display = (cat === 'todo' || g.dataset.cat === cat) ? '' : 'none';
+        });
+        document.querySelectorAll('.filtro-btn').forEach(function(b) {
+          b.classList.toggle('activo', b.dataset.filtro === cat);
+        });
+      };
+
       var saved = localStorage.getItem('sismo-lang');
       if (saved === 'en') setLang('en');
+
+      // Auto URL previews
+      document.querySelectorAll('.tarjeta, .tarjeta-ig').forEach(function(card) {
+        var link = card.querySelector('.tarjeta-link');
+        if (link) {
+          try {
+            var domain = new URL(link.href).hostname.replace('www.', '');
+            var urlEl = document.createElement('span');
+            urlEl.className = 'tarjeta-url';
+            urlEl.textContent = domain;
+            card.appendChild(urlEl);
+          } catch(e) {}
+        }
+      });
     })();
   </script>
 
