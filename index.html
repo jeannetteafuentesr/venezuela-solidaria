@@ -560,13 +560,14 @@
     <!-- ── DESCRIPCIÓN ── -->
     <div style="background:#fff;border-radius:20px;border:1px solid var(--borde);padding:1.1rem 1.25rem;margin-bottom:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);">
       <p style="font-size:1rem;color:var(--texto2);line-height:1.6;" data-en="Directory of verified websites and files to help earthquake victims in Venezuela. All information is reviewed before being published.">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
-      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: June 29, 2026 · 6:16 PM (Venezuela time)">Última actualización: 29 de junio de 2026 · 6:16 PM (hora Venezuela)</p>
+      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: June 29, 2026 · 6:57 AM (Venezuela time)">Última actualización: 29 de junio de 2026 · 6:57 AM (hora Venezuela)</p>
     </div>
 
     <!-- ── FILTROS ── -->
     <div class="filtros">
       <button class="filtro-btn activo" data-filtro="todo" data-en="All" onclick="filtrar('todo')">Todo</button>
       <button class="filtro-btn" data-filtro="salud" data-en="🩺 Health" onclick="filtrar('salud')">🩺 Salud</button>
+      <button class="filtro-btn" data-filtro="emergencias" data-en="🆘 Emergencies" onclick="filtrar('emergencias')">🆘 Emergencias</button>
       <button class="filtro-btn" data-filtro="personas" data-en="🔍 Persons" onclick="filtrar('personas')">🔍 Personas</button>
       <button class="filtro-btn" data-filtro="mascotas" data-en="🐾 Pets" onclick="filtrar('mascotas')">🐾 Mascotas</button>
       <button class="filtro-btn" data-filtro="ingenieros" data-en="🏗️ Engineers" onclick="filtrar('ingenieros')">🏗️ Ingenieros</button>
@@ -619,10 +620,24 @@
       </div>
     </div>
 
-    <!-- Personas Desaparecidas -->
-    <div class="categoria-grupo" data-cat="personas">
-      <h2 class="categoria-titulo" data-en="🔍 Missing Persons">🔍 Personas Desaparecidas</h2>
+    <!-- Emergencias -->
+    <div class="categoria-grupo" data-cat="emergencias">
+      <h2 class="categoria-titulo" data-en="🆘 Emergencies">🆘 Emergencias</h2>
       <div class="grid">
+        <div class="tarjeta">
+          <a href="https://venezuelarescate.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🚒</span>
+          <span class="tarjeta-cat" data-en="Rescue">Rescate</span>
+          <h3 data-en="Venezuela Rescate – USB Firefighters">Venezuela Rescate – Bomberos USB</h3>
+          <p data-en="Rescue coordination platform by USB firefighters. Report emergencies, request help, and follow operations in real time. @bomberosusb">Plataforma de coordinación de rescate de los Bomberos USB. Reporta emergencias, pide ayuda y sigue las operaciones en tiempo real. @bomberosusb</p>
+        </div>
+        <div class="tarjeta">
+          <a href="https://docs.google.com/spreadsheets/d/1XA2-_XPxAxivUjYsdyva7O0xEuvYF4bft3ZqSdM3grQ/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🆘</span>
+          <span class="tarjeta-cat" data-en="Rescue">Rescate</span>
+          <h3 data-en="Persons Trapped Alive – Venezuela">Rescate Personas Atrapadas con Vida – Venezuela</h3>
+          <p data-en="Updated spreadsheet with reports of people trapped alive across Venezuela. Coordinate rescue efforts and report new cases.">Hoja de cálculo actualizada con reportes de personas atrapadas con vida en Venezuela. Coordina esfuerzos de rescate y reporta nuevos casos.</p>
+        </div>
         <div class="tarjeta">
           <a href="https://red-de-esperanza-lime.vercel.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">🗺️</span>
@@ -637,6 +652,13 @@
           <h3 data-en="Red Ayuda Venezuela – AI Search">Red Ayuda Venezuela – Búsqueda con IA</h3>
           <p data-en="Emergency network with AI to search for missing persons by name or photo. Real-time stats and directory of volunteers, aid points, and pets.">Red de emergencia con IA para buscar desaparecidos por nombre o foto. Estadísticas en tiempo real y directorio de voluntarios, puntos de ayuda y mascotas.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Personas Desaparecidas -->
+    <div class="categoria-grupo" data-cat="personas">
+      <h2 class="categoria-titulo" data-en="🔍 Missing Persons">🔍 Personas Desaparecidas</h2>
+      <div class="grid">
         <div class="tarjeta">
           <a href="https://encuentrame-ve.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">💬</span>
@@ -650,13 +672,6 @@
           <span class="tarjeta-cat" data-en="Persons">Personas</span>
           <h3 data-en="Venezuela Reporta – Health Centers &amp; Shelters">Venezuela Reporta – Centros de Salud y Refugios</h3>
           <p data-en="Search for affected persons across health centers and shelters registered after the earthquake.">Búsqueda de personas afectadas en centros de salud y refugios registrados tras el terremoto.</p>
-        </div>
-        <div class="tarjeta">
-          <a href="https://docs.google.com/spreadsheets/d/1XA2-_XPxAxivUjYsdyva7O0xEuvYF4bft3ZqSdM3grQ/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          <span class="tarjeta-icon">🆘</span>
-          <span class="tarjeta-cat" data-en="Rescue">Rescate</span>
-          <h3 data-en="Persons Trapped Alive – Venezuela">Rescate Personas Atrapadas con Vida – Venezuela</h3>
-          <p data-en="Updated spreadsheet with reports of people trapped alive across Venezuela. Coordinate rescue efforts and report new cases.">Hoja de cálculo actualizada con reportes de personas atrapadas con vida en Venezuela. Coordina esfuerzos de rescate y reporta nuevos casos.</p>
         </div>
         <div class="tarjeta">
           <a href="https://desaparecidosterremotovenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
