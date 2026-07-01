@@ -20,7 +20,7 @@
       --amarillo: #FCD116;
       --azul:     #003893;
       --rojo:     #CF142B;
-      --verde-gfm:#02a95c;
+      --morado-yummy:#5B21B6;
       --fondo:    #f5f5f7;
       --tarjeta:  #ffffff;
       --texto:    #1d1d1f;
@@ -42,21 +42,21 @@
     }
 
     /* ── BANNER GOFUNDME ── */
-    .banner-gfm {
-      background: #e6f7ef;
+    .banner-yummy {
+      background: #ede9fe;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
       padding: 0.55rem 1.25rem;
       text-decoration: none;
-      border-bottom: 1px solid #c3ecd8;
+      border-bottom: 1px solid #c4b5fd;
     }
 
-    .banner-gfm:hover { background: #d4f0e4; }
+    .banner-yummy:hover { background: #ddd6fe; }
 
-    .banner-gfm-logo {
-      background: var(--verde-gfm);
+    .banner-yummy-logo {
+      background: var(--morado-yummy);
       color: #fff;
       font-size: 0.62rem;
       font-weight: 900;
@@ -66,14 +66,14 @@
       flex-shrink: 0;
     }
 
-    .banner-gfm-text {
-      color: #015c32;
+    .banner-yummy-text {
+      color: #3b0764;
       font-size: 0.82rem;
       font-weight: 600;
     }
 
-    .banner-gfm-arrow {
-      color: #02a95c;
+    .banner-yummy-arrow {
+      color: var(--morado-yummy);
       font-size: 0.82rem;
     }
 
@@ -122,11 +122,11 @@
       font-family: inherit;
     }
 
-    .lang-btn:hover { color: var(--texto); }
+    .lang-btn:hover { color: #000; background: rgba(0,0,0,0.06); }
 
     .lang-btn.lang-active {
-      color: var(--azul);
-      background: rgba(0,56,147,0.08);
+      color: #fff;
+      background: #111;
     }
 
     .lang-sep { font-size: 0.6rem; color: #d1d1d6; user-select: none; }
@@ -280,7 +280,7 @@
       width: fit-content;
     }
 
-    .tarjeta h3 {
+    .tarjeta h3, .tarjeta-directorio h3 {
       font-size: 0.92rem;
       font-weight: 600;
       letter-spacing: -0.2px;
@@ -289,7 +289,7 @@
       padding-right: 2rem;
     }
 
-    .tarjeta p {
+    .tarjeta p, .tarjeta-directorio p {
       font-size: 0.8rem;
       color: var(--texto2);
       flex: 1;
@@ -524,21 +524,204 @@
 
     .admin-tiny:hover { color: var(--texto2); }
 
+    /* ── BUSCADOR ── */
+    .buscador {
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .buscador-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.55rem 1rem 0.55rem 2.2rem;
+      border: 1.5px solid var(--borde);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      color: var(--texto);
+      background: var(--fondo);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .buscador-input:focus { border-color: var(--acento); }
+    .buscador-input::placeholder { color: var(--texto2); }
+    .buscador-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--texto2);
+      pointer-events: none;
+      font-size: 0.85rem;
+    }
+    .buscador-clear {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--texto2);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      display: none;
+      padding: 0;
+    }
+
+    /* ── MODAL DONACIONES ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.abierto { display: flex; }
+    .modal-box {
+      background: var(--fondo);
+      border-radius: 18px;
+      max-width: 700px;
+      width: 100%;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    }
+    .modal-header {
+      padding: 1.2rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--borde);
+      position: relative;
+    }
+    .modal-header h2 { font-size: 1rem; margin: 0 0 0.2rem; }
+    .modal-header p { font-size: 0.72rem; color: var(--texto2); margin: 0; }
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--borde);
+      border: none;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--texto2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { background: #e0e0e0; }
+    .modal-body {
+      overflow-y: auto;
+      padding: 1rem 1.4rem 1.4rem;
+    }
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .modal-entry {
+      background: var(--tarjeta);
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+    }
+    .modal-entry-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .modal-entry-header strong, .modal-entry-name { font-size: 0.82rem; font-weight: 600; }
+    .modal-ig, .modal-ig-link {
+      font-size: 0.72rem;
+      color: #e1306c;
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .modal-ig:hover, .modal-ig-link:hover { opacity: 0.75; }
+    .modal-pay, .modal-methods {
+      display: flex;
+      gap: 0.4rem;
+      align-items: baseline;
+      font-size: 0.72rem;
+      color: var(--texto2);
+      margin-top: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .modal-method-val { font-size: 0.72rem; color: var(--texto2); word-break: break-all; }
+    .modal-concepto {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      margin-top: 0.5rem;
+      background: #fef9c3;
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+    }
+    .modal-concepto-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: #92400e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .modal-concepto-val {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #78350f;
+      letter-spacing: 0.03em;
+    }
+    .modal-method {
+      font-size: 0.6rem;
+      font-weight: 700;
+      background: var(--borde);
+      color: var(--texto);
+      padding: 0.1rem 0.4rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .tarjeta-directorio {
+      cursor: pointer;
+      background: linear-gradient(135deg, #e0f7ff 0%, #e6faf2 100%);
+      border-radius: 12px;
+      padding: 1rem 1.1rem 1rem;
+      border: 1px solid #b2e8d4;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+    }
+    .tarjeta-directorio:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 12px 32px rgba(16,185,129,0.12);
+    }
+    .tarjeta-directorio .dir-cta {
+      font-size: 0.72rem;
+      color: #0d7a5f;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       main { padding: 1.5rem 1rem 4rem; }
       header h1 { font-size: 0.9rem; }
       .badge-urgencia { display: none; }
-      .banner-gfm-text { font-size: 0.78rem; }
+      .banner-yummy-text { font-size: 0.78rem; }
     }
   </style>
 </head>
 <body>
 
-  <a href="https://www.gofundme.com/f/emergency-relief-for-venezuela-earthquake-victims" target="_blank" rel="noopener noreferrer" class="banner-gfm">
-    <span class="banner-gfm-logo">GoFundMe</span>
-    <span class="banner-gfm-text" data-en="Donate from abroad for earthquake victims">Dona desde el exterior para las víctimas del terremoto</span>
-    <span class="banner-gfm-arrow">→</span>
+  <a href="https://dona.yummyrides.com/" target="_blank" rel="noopener noreferrer" class="banner-yummy">
+    <span class="banner-yummy-logo">Yummy</span>
+    <span class="banner-yummy-text" data-en="Donate through Yummy to help earthquake victims">Dona a través de Yummy para ayudar a las víctimas del terremoto</span>
+    <span class="banner-yummy-arrow">→</span>
   </a>
 
   <div class="flag-stripe"></div>
@@ -559,8 +742,15 @@
 
     <!-- ── DESCRIPCIÓN ── -->
     <div style="background:#fff;border-radius:20px;border:1px solid var(--borde);padding:1.1rem 1.25rem;margin-bottom:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);">
-      <p style="font-size:1rem;color:var(--texto2);line-height:1.6;" data-en="Directory of verified websites and files to help earthquake victims in Venezuela. All information is reviewed before being published.">Directorio de páginas web y archivos verificados para ayudar a las víctimas del terremoto en Venezuela. Toda la información es revisada antes de publicarse.</p>
-      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: June 29, 2026 · 3:58 PM (Venezuela time)">Última actualización: 29 de junio de 2026 · 3:58 PM (hora Venezuela)</p>
+      <p style="font-size:1rem;color:var(--texto2);line-height:1.6;" data-en="Verified resources to help earthquake victims in Venezuela.">Recursos verificados para ayudar a las víctimas del terremoto en Venezuela.</p>
+      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: July 1, 2026 · 7:43 AM (Venezuela time)">Última actualización: 1 de julio de 2026 · 7:43 AM (hora Venezuela)</p>
+    </div>
+
+    <!-- ── BUSCADOR ── -->
+    <div class="buscador">
+      <span class="buscador-icon">🔍</span>
+      <input id="buscador-input" type="text" class="buscador-input" placeholder="Buscar recurso…" data-en-ph="Search resource…" oninput="buscarRecurso(this.value)">
+      <button class="buscador-clear" id="buscador-clear" onclick="limpiarBusqueda()" aria-label="Limpiar">✕</button>
     </div>
 
     <!-- ── FILTROS ── -->
@@ -623,6 +813,13 @@
           <span class="tarjeta-cat" data-en="3D Printing">Impresión 3D</span>
           <h3 data-en="3D Printed Splints – Pets">Férulas por Impresión 3D – Mascotas</h3>
           <p data-en="Ready-to-print file for 3D orthopedic splints for pets with fractures. Download and help if you have a 3D printer.">Archivo para imprimir férulas ortopédicas en 3D para mascotas con fracturas. Descarga y ayuda si tienes impresora 3D.</p>
+        </div>
+        <div class="tarjeta">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd8J8QcqHyNAu2ryh5Mxht2lT39UCg-i0O6Lzue9Mmsk_G5dg/viewform" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🧩</span>
+          <span class="tarjeta-cat" data-en="Specialized Support">Apoyo Especializado</span>
+          <h3 data-en="Venezuelan Autism Organization – Registry">Organización Venezolana de Autismo – Registro</h3>
+          <p data-en="Registry for families with autistic members to channel specialized aid after the earthquake. Fill out the form to receive support.">Registro para familias con personas en el espectro autista para canalizar ayuda especializada tras el sismo. Completa el formulario para recibir apoyo.</p>
         </div>
       </div>
     </div>
@@ -768,6 +965,13 @@
           <h3 data-en="Mi Gente VE">Mi Gente VE</h3>
           <p data-en="Help platform for pets affected by the earthquake. Connects rescuers with owners searching for their animals.">Plataforma de ayuda para mascotas afectadas por el sismo. Conecta a rescatistas con dueños que buscan a sus animales.</p>
         </div>
+        <div class="tarjeta">
+          <a href="https://nuevahuella.metratools.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🐾</span>
+          <span class="tarjeta-cat" data-en="Pets · Adoption">Mascotas · Adopción</span>
+          <h3 data-en="Nueva Huella – Adoption &amp; Foster">Nueva Huella – Adopción y Hogar Temporal</h3>
+          <p data-en="Connects rescuers, foster families and adopters across Venezuela. Final approval is made by the caretaker or moderator.">Conecta rescatistas, cuidadores y familias en toda Venezuela. La aprobación final de adopción o hogar temporal la hace el cuidador o moderador.</p>
+        </div>
         <div class="tarjeta tarjeta-ig">
           <a href="https://www.instagram.com/veterinariaavila/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <span class="tarjeta-icon">🏥</span>
@@ -783,25 +987,18 @@
           <p data-en="Volunteer veterinarian in Caracas attending to affected pets. @isaacdvieirasilguero_">Veterinario voluntario en Caracas atendiendo mascotas afectadas. @isaacdvieirasilguero_</p>
         </div>
         <div class="tarjeta tarjeta-ig">
-          <a href="https://www.instagram.com/reddeapoyocanino/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <span class="tarjeta-icon">🐩</span>
-          <span class="tarjeta-cat" data-en="Pets · Instagram">Mascotas · Instagram</span>
-          <h3 data-en="Canine Support Network – Caracas">Red de Apoyo Canino – Caracas</h3>
-          <p data-en="Veterinary support network for dogs affected by the earthquake in Caracas. @reddeapoyocanino">Red veterinaria de apoyo para perros afectados por el sismo en Caracas. @reddeapoyocanino</p>
-        </div>
-        <div class="tarjeta tarjeta-ig">
           <a href="https://www.instagram.com/happyvets/" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           <span class="tarjeta-icon">🌟</span>
           <span class="tarjeta-cat" data-en="Pets · Instagram">Mascotas · Instagram</span>
           <h3 data-en="Free Veterinary Care – Happy Vets">Atención Veterinaria Gratuita – Happy Vets</h3>
           <p data-en="Free veterinary care for pets affected by the earthquake. @happyvets">Atención veterinaria gratuita para mascotas afectadas por el sismo. @happyvets</p>
         </div>
-        <div class="tarjeta tarjeta-ig">
-          <a href="https://www.instagram.com/miprimerrescate" target="_blank" rel="noopener noreferrer" class="tarjeta-link ig" aria-label="Ver en Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <span class="tarjeta-icon">🐾</span>
-          <span class="tarjeta-cat" data-en="Pets · Instagram">Mascotas · Instagram</span>
-          <h3 data-en="Mi Primer Rescate – La Guaira">Mi Primer Rescate – La Guaira</h3>
-          <p data-en="Accepting donations of kennels, beds and supplies for dogs in La Guaira. @miprimerrescate">Acepta donaciones de kennels, camitas e insumos para perros en La Guaira. @miprimerrescate</p>
+        <div class="tarjeta-directorio" onclick="abrirModalDonaciones()" role="button" tabindex="0">
+          <span class="tarjeta-icon">💛</span>
+          <span class="tarjeta-cat" data-en="Verified Donations">Donaciones Verificadas</span>
+          <h3 data-en="Donate Safely – Pets &amp; Volunteers">Dona seguro – Mascotas y voluntarios</h3>
+          <p data-en="16 verified organizations and volunteers accepting PayPal, Zelle, Binance and more. Sorted A–Z.">16 organizaciones y voluntarios verificados que aceptan PayPal, Zelle, Binance y más. Ordenados A–Z.</p>
+          <span class="dir-cta" data-en="View directory →">Ver directorio →</span>
         </div>
       </div>
     </div>
@@ -955,13 +1152,6 @@
           <h3 data-en="Espacio Raíz Consciente">Espacio Raíz Consciente</h3>
           <p data-en="Support and transportation services for those affected. Request or coordinate logistical help in your area.">Servicios de apoyo y transporte para afectados. Solicita o coordina ayuda logística en tu zona.</p>
         </div>
-        <div class="tarjeta">
-          <a href="https://interp-aid.lovable.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          <span class="tarjeta-icon">🗣️</span>
-          <span class="tarjeta-cat" data-en="Services">Servicios</span>
-          <h3 data-en="Interp Aid">Interp Aid</h3>
-          <p data-en="Interpretation and communication assistance for those affected by language barriers or special needs.">Asistencia con interpretación y comunicación para afectados con barreras idiomáticas o necesidades especiales.</p>
-        </div>
         <div class="tarjeta-tel">
           <span class="tarjeta-cat" data-en="Transport · Caracas">Traslados · Caracas</span>
           <h3 data-en="Tatiana Suinaga – supply transport in Caracas">Tatiana Suinaga – traslados de insumos en Caracas</h3>
@@ -1094,13 +1284,46 @@
 
       window.setLang = setLang;
 
+      var catActual = 'todo';
+
       window.filtrar = function(cat) {
+        catActual = cat;
+        limpiarBusqueda();
         document.querySelectorAll('.categoria-grupo').forEach(function(g) {
           g.style.display = (cat === 'todo' || g.dataset.cat === cat) ? '' : 'none';
+          g.querySelectorAll('.tarjeta, .tarjeta-ig, .tarjeta-tel').forEach(function(c) {
+            c.style.display = '';
+          });
         });
         document.querySelectorAll('.filtro-btn').forEach(function(b) {
           b.classList.toggle('activo', b.dataset.filtro === cat);
         });
+      };
+
+      window.buscarRecurso = function(q) {
+        var texto = q.toLowerCase().trim();
+        var clearBtn = document.getElementById('buscador-clear');
+        clearBtn.style.display = texto ? 'block' : 'none';
+        if (!texto) { filtrar(catActual); return; }
+        document.querySelectorAll('.filtro-btn').forEach(function(b) {
+          b.classList.toggle('activo', b.dataset.filtro === 'todo');
+        });
+        document.querySelectorAll('.categoria-grupo').forEach(function(g) {
+          var hayVisible = false;
+          g.querySelectorAll('.tarjeta, .tarjeta-ig').forEach(function(card) {
+            var coincide = card.textContent.toLowerCase().includes(texto);
+            card.style.display = coincide ? '' : 'none';
+            if (coincide) hayVisible = true;
+          });
+          g.style.display = hayVisible ? '' : 'none';
+        });
+      };
+
+      window.limpiarBusqueda = function() {
+        var input = document.getElementById('buscador-input');
+        if (input) input.value = '';
+        var clearBtn = document.getElementById('buscador-clear');
+        if (clearBtn) clearBtn.style.display = 'none';
       };
 
       var saved = localStorage.getItem('sismo-lang');
@@ -1120,7 +1343,206 @@
         }
       });
     })();
+
+    window.abrirModalDonaciones = function() {
+      document.getElementById('modal-donaciones').classList.add('abierto');
+      document.body.style.overflow = 'hidden';
+    };
+    window.cerrarModal = function() {
+      document.getElementById('modal-donaciones').classList.remove('abierto');
+      document.body.style.overflow = '';
+    };
+    window.cerrarModalExterno = function(e) {
+      if (e.target === document.getElementById('modal-donaciones')) cerrarModal();
+    };
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') cerrarModal();
+    });
   </script>
+
+  <!-- Modal: Directorio de Donaciones para Mascotas -->
+  <div class="modal-overlay" id="modal-donaciones" onclick="cerrarModalExterno(event)" role="dialog" aria-modal="true" aria-label="Directorio de donaciones para mascotas">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">💛 Directorio de Donaciones – Mascotas</h2>
+          <p class="modal-subtitle">16 organizaciones verificadas · ordenadas A–Z</p>
+        </div>
+        <button class="modal-close" onclick="cerrarModal()" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body"><div class="modal-grid">
+
+        <!-- 1. Ayudemos a Pluto -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Ayudemos a Pluto</span>
+            <a href="https://www.instagram.com/ayudemosapluto/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@ayudemosapluto</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">ayudemosapluto2020@hotmail.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">khazne2000@yahoo.com (José Khazne)</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA AYUDEMOSAPLUTO</span></div>
+        </div>
+
+        <!-- 2. Fabiana Sánchez -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Fabiana Sánchez</span>
+            <a href="https://www.instagram.com/kira.thebernese/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@kira.thebernese</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">kaiyorawbar@gmail.com (Kaiyo Raw LLC)</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA VENEZUELA</span></div>
+        </div>
+
+        <!-- 3. Fe Vida y Rescate Animal -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Fe Vida y Rescate Animal</span>
+            <a href="https://www.instagram.com/fevranimal/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@fevranimal</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">Baraboo.ca@gmail.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">+1(954)6818827 (Carmen Parejo)</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA FEVRANIMAL MARACAY</span></div>
+        </div>
+
+        <!-- 4. Funda Gato -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Funda Gato</span>
+            <a href="https://www.instagram.com/fundagato/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@fundagato</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">micuccifilomena@hotmail.com (María F Micucci)</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA TERREMOTO VENEZUELA</span></div>
+        </div>
+
+        <!-- 5. Fundación Mi Primer Rescate -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Fundación Mi Primer Rescate</span>
+            <a href="https://www.instagram.com/miprimerrescate/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@miprimerrescate</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">Nieves8900bb@hotmail.com</span></div>
+        </div>
+
+        <!-- 6. Fundación San Lázaro -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Fundación San Lázaro</span>
+            <a href="https://www.instagram.com/sanlazaroptocabello/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@sanlazaroptocabello</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">gabyroa40@gmail.com</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA TERREMOTO VENEZUELA</span></div>
+        </div>
+
+        <!-- 7. Huellas Fénix -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Huellas Fénix</span>
+            <a href="https://www.instagram.com/huellasfenix/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@huellasfenix</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">refugiohuellasfenix@gmail.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">jclattassa@outlook.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Binance</span><span class="modal-method-val">ID: 837330212</span></div>
+          <div class="modal-methods"><span class="modal-method">Bizum</span><span class="modal-method-val">+584141340388</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA TERREMOTO VENEZUELA</span></div>
+        </div>
+
+        <!-- 8. La Manada de Bethoven -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">La Manada de Bethoven</span>
+            <a href="https://www.instagram.com/lamanadadebethoven/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@lamanadadebethoven</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">mayerday5@gmail.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">noliswish@gmail.com (Nolis' Wish)</span></div>
+          <div class="modal-methods"><span class="modal-method">Binance</span><span class="modal-method-val">mayerday5@gmail.com</span></div>
+        </div>
+
+        <!-- 9. Los Amigos de Beta -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Los Amigos de Beta</span>
+            <a href="https://www.instagram.com/losamigosdebeta/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@losamigosdebeta</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">fundacionamigosdebeta@gmail.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">wenmarcartografia17@gmail.com (Ana Rumbos)</span></div>
+          <div class="modal-methods"><span class="modal-method">Binance</span><span class="modal-method-val">ID: 300929361</span></div>
+          <div class="modal-methods"><span class="modal-method">Bizum</span><span class="modal-method-val">+34687151720</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA TERREMOTO VENEZUELA</span></div>
+        </div>
+
+        <!-- 10. Marylin Rodriguez -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Marylin Rodriguez</span>
+            <a href="https://www.instagram.com/marylin_21/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@marylin_21</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">@marylinrodriguez21</span></div>
+          <div class="modal-methods"><span class="modal-method">Binance</span><span class="modal-method-val">Marylinrodri.m07@gmail.com · ID: 1163858486</span></div>
+          <div class="modal-methods"><span class="modal-method">Banco</span><span class="modal-method-val">Santander PT: PT50001800080041935702095 (Andreína Jesus · +351 927 373 618)</span></div>
+          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA VENEZUELA</span></div>
+        </div>
+
+        <!-- 11. Peluditos de Venezuela -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Peluditos de Venezuela</span>
+            <a href="https://www.instagram.com/peluditosve_/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@peluditosve_</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">donaciones.peluditos@gmail.com (Sunshine Travel LLC)</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">donaciones.peluditos@gmail.com (Cini Building LLC)</span></div>
+        </div>
+
+        <!-- 12. Planeta Animal Rescue -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Planeta Animal Rescue</span>
+            <a href="https://www.instagram.com/planetaanimalrescue/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@planetaanimalrescue</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">fundrescategarraypata@gmail.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">planetaanimalrescue@gmail.com (Oriani Moreno)</span></div>
+        </div>
+
+        <!-- 13. Programa Lucas Ramón -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Programa Lucas Ramón</span>
+            <a href="https://www.instagram.com/fraenkele/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@fraenkele</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">fraenkelescalante1@gmail.com</span></div>
+        </div>
+
+        <!-- 14. Red de Apoyo Canino -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Red de Apoyo Canino</span>
+            <a href="https://www.instagram.com/reddeapoyocanino/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@reddeapoyocanino</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">paypal.me/reddeapoyocanino</span></div>
+          <div class="modal-methods"><span class="modal-method">Teaming</span><span class="modal-method-val">teaming.net/reddeapoyocanino</span></div>
+        </div>
+
+        <!-- 15. Santuario Luna -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Santuario Luna</span>
+            <a href="https://www.instagram.com/santuarioluna7/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@santuarioluna7</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">fundacionsantuarioluna@gmail.com (Jessica Luna)</span></div>
+        </div>
+
+        <!-- 16. Voluntarios Por Los Animales -->
+        <div class="modal-entry">
+          <div class="modal-entry-header">
+            <span class="modal-entry-name">Voluntarios Por Los Animales</span>
+            <a href="https://www.instagram.com/voluntariosporlosanimales/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@voluntariosporlosanimales</a>
+          </div>
+          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">voluntarios_porlosanimales@yahoo.com</span></div>
+          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">voluntarios_porlosanimales@yahoo.com (Asoc. Civil Voluntarios por los Animales)</span></div>
+        </div>
+
+      </div></div><!-- /modal-grid /modal-body -->
+    </div>
+  </div>
 
 </body>
 </html>
