@@ -743,7 +743,7 @@
     <!-- ── DESCRIPCIÓN ── -->
     <div style="background:#fff;border-radius:20px;border:1px solid var(--borde);padding:1.1rem 1.25rem;margin-bottom:1.5rem;box-shadow:0 1px 2px rgba(0,0,0,0.03),0 4px 16px rgba(0,0,0,0.05);">
       <p style="font-size:1rem;color:var(--texto2);line-height:1.6;" data-en="Verified resources to help earthquake victims in Venezuela.">Recursos verificados para ayudar a las víctimas del terremoto en Venezuela.</p>
-      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: July 1, 2026 · 9:45 AM (Venezuela time)">Última actualización: 1 de julio de 2026 · 9:45 AM (hora Venezuela)</p>
+      <p style="font-size:0.72rem;color:#c7c7cc;margin-top:0.5rem;" data-en="Last updated: July 2, 2026 · 1:35 PM (Venezuela time)">Última actualización: 2 de julio de 2026 · 1:35 PM (hora Venezuela)</p>
     </div>
 
     <!-- ── BUSCADOR ── -->
@@ -761,7 +761,8 @@
       <button class="filtro-btn" data-filtro="personas" data-en="🔍 Persons" onclick="filtrar('personas')">🔍 Personas</button>
       <button class="filtro-btn" data-filtro="mascotas" data-en="🐾 Pets" onclick="filtrar('mascotas')">🐾 Mascotas</button>
       <button class="filtro-btn" data-filtro="ingenieros" data-en="🏗️ Engineers" onclick="filtrar('ingenieros')">🏗️ Ingenieros</button>
-      <button class="filtro-btn" data-filtro="donaciones" data-en="🤝 Donations" onclick="filtrar('donaciones')">🤝 Donaciones</button>
+      <button class="filtro-btn" data-filtro="acopio" data-en="🗃️ Aid Centers" onclick="filtrar('acopio')">🗃️ Acopio</button>
+      <button class="filtro-btn" data-filtro="donaciones" data-en="🤝 Donations &amp; Volunteering" onclick="filtrar('donaciones')">🤝 Donaciones</button>
       <button class="filtro-btn" data-filtro="refugios" data-en="🏠 Shelters" onclick="filtrar('refugios')">🏠 Refugios</button>
     </div>
 
@@ -1053,11 +1054,17 @@
     </div>
 
     <!-- Donaciones, Acopio y Voluntariado -->
-    <div class="categoria-grupo" data-cat="donaciones">
-      <h2 class="categoria-titulo" data-en="🤝 Donations, Aid &amp; Volunteering">🤝 Donaciones, Acopio y Voluntariado</h2>
-      <p style="font-size:0.78rem;color:#6e6e73;background:#f5f5f7;border-radius:10px;padding:0.6rem 0.9rem;margin-bottom:1rem;line-height:1.5;" data-en="⚠️ These are verified citizen initiatives — independent organizations and volunteers. They are not government entities. Always verify before sending money.">⚠️ Estas son iniciativas ciudadanas verificadas — organizaciones independientes y voluntarios. No son entes gubernamentales. Verifica siempre antes de enviar dinero.</p>
+    <!-- Centros de Acopio -->
+    <div class="categoria-grupo" data-cat="acopio">
+      <h2 class="categoria-titulo" data-en="🗃️ Aid Collection Centers">🗃️ Centros de Acopio</h2>
       <div class="grid">
-        <!-- Centros de Acopio -->
+        <div class="tarjeta">
+          <a href="https://ayudovenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <span class="tarjeta-icon">🤝</span>
+          <span class="tarjeta-cat" data-en="Collection Centers">Centros de Acopio</span>
+          <h3 data-en="Ayudo Venezuela">Ayudo Venezuela</h3>
+          <p data-en="Community-driven platform with a filterable map of collection centers by state and city. Also includes donation guidelines, emergency contacts, and a form to submit new centers for verification.">Plataforma comunitaria con mapa filtrable de centros de acopio por estado y ciudad. Incluye qué donar, contactos de emergencia y formulario para reportar nuevos centros pendientes de verificación.</p>
+        </div>
         <div class="tarjeta">
           <a href="https://centro-de-acopio-ven.vercel.app/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
           <span class="tarjeta-icon">📦</span>
@@ -1086,13 +1093,14 @@
           <h3 data-en="Collection Centers &amp; Shelters Map">Mapa Acopios y Refugios</h3>
           <p data-en="Updated map of active collection centers and shelters across the country. Find the one closest to your area.">Mapa actualizado de centros de acopio y refugios activos en todo el país. Encuentra el más cercano a tu zona.</p>
         </div>
-        <div class="tarjeta">
-          <a href="https://recursosvenezuela.com/" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          <span class="tarjeta-icon">🗺️</span>
-          <span class="tarjeta-cat" data-en="Collection Centers">Centros de Acopio</span>
-          <h3 data-en="Recursos Venezuela – Aid Directory">Recursos Venezuela – Directorio de Ayuda</h3>
-          <p data-en="Comprehensive directory of collection centers, NGOs and aid resources across Venezuela. Find where to donate or receive help near you.">Directorio completo de centros de acopio, ONGs y recursos de ayuda en Venezuela. Encuentra dónde donar o recibir ayuda cerca de ti.</p>
-        </div>
+      </div>
+    </div>
+
+    <!-- Donaciones y Voluntariado -->
+    <div class="categoria-grupo" data-cat="donaciones">
+      <h2 class="categoria-titulo" data-en="🤝 Donations &amp; Volunteering">🤝 Donaciones y Voluntariado</h2>
+      <p style="font-size:0.78rem;color:#6e6e73;background:#f5f5f7;border-radius:10px;padding:0.6rem 0.9rem;margin-bottom:1rem;line-height:1.5;" data-en="⚠️ These are verified citizen initiatives — independent organizations and volunteers. They are not government entities. Always verify before sending money.">⚠️ Estas son iniciativas ciudadanas verificadas — organizaciones independientes y voluntarios. No son entes gubernamentales. Verifica siempre antes de enviar dinero.</p>
+      <div class="grid">
         <!-- Donaciones -->
         <div class="tarjeta">
           <a href="https://justgiving.com/campaign/venezuelaearthquake2026" target="_blank" rel="noopener noreferrer" class="tarjeta-link" aria-label="Abrir enlace"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -1380,7 +1388,7 @@
       <div class="modal-header">
         <div>
           <h2 class="modal-title">💛 Directorio de Donaciones – Mascotas</h2>
-          <p class="modal-subtitle">17 organizaciones verificadas · ordenadas A–Z</p>
+          <p class="modal-subtitle">16 organizaciones verificadas · ordenadas A–Z</p>
         </div>
         <button class="modal-close" onclick="cerrarModal()" aria-label="Cerrar">✕</button>
       </div>
@@ -1407,16 +1415,6 @@
           <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA VENEZUELA</span></div>
         </div>
 
-        <!-- 3. Fe Vida y Rescate Animal -->
-        <div class="modal-entry">
-          <div class="modal-entry-header">
-            <span class="modal-entry-name">Fe Vida y Rescate Animal</span>
-            <a href="https://www.instagram.com/fevranimal/" target="_blank" rel="noopener noreferrer" class="modal-ig-link"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@fevranimal</a>
-          </div>
-          <div class="modal-methods"><span class="modal-method">PayPal</span><span class="modal-method-val">Baraboo.ca@gmail.com</span></div>
-          <div class="modal-methods"><span class="modal-method">Zelle</span><span class="modal-method-val">+1(954)6818827 (Carmen Parejo)</span></div>
-          <div class="modal-concepto"><span class="modal-concepto-label">Concepto</span><span class="modal-concepto-val">AYUDA FEVRANIMAL MARACAY</span></div>
-        </div>
 
         <!-- 4. Funda Gato -->
         <div class="modal-entry">
